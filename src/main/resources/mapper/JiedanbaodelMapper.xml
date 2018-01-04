@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.didi.domain.mapper.JiedanbaodelMapper">
+<!--&lt;!&ndash; 通过Id查找 &ndash;&gt;-->
+<!--<select id="getUserById" resultType="com.xiaoju.mt.qa.domain.User">-->
+<!--select * from user u where id=#{id}-->
+<!--</select>-->
+<!--&lt;!&ndash; 查询所有的User &ndash;&gt;-->
+<!--<select id="findUserList" resultType="com.luken.model.User">-->
+<!--SELECT u.id, u.name, u.password, u.age FROM user_data u;-->
+<!--</select>-->
+<!--&lt;!&ndash; 添加 &ndash;&gt;-->
+<!--<insert id="addUser" parameterType="com.luken.model.User">-->
+<!--insert into user_data values(#{name},#{password},#{age})-->
+<!--</insert>-->
+<!-- 删除 -->
+<delete id="delorder" parameterType="com.example.didi.Controller.JiedanbaodelController">
+    DELETE FROM littleboyonlinetest.opph_ordercenter_sub_order_${param2} WHERE user_mid=#{param1};
+</delete>
+<delete id="delpay" parameterType="com.example.didi.Controller.JiedanbaodelController">
+    DELETE FROM littleboyonlinetest.opph_ordercenter_pay_order_${param2} WHERE user_mid=#{param1};
+</delete>
+<delete id="delpolicy" parameterType="com.example.didi.Controller.JiedanbaodelController">
+    DELETE FROM littleboyonlinetest.opph_ordercenter_policy_${param2} WHERE user_mid=#{param1};
+</delete>
+<delete id="deldetail" parameterType="com.example.didi.Controller.JiedanbaodelController">
+    DELETE FROM littleboyonlinetest.opph_ordercenter_pay_detail_${param2} WHERE user_mid=#{param1};
+</delete>
+<delete id="dellog" parameterType="com.example.didi.Controller.JiedanbaodelController">
+    DELETE FROM man_opph_plan.opph_plan_log WHERE user_mid=#{param1};
+</delete>
+<delete id="delgroup" parameterType="com.example.didi.Controller.JiedanbaodelController">
+    DELETE FROM man_opph_plan.opph_plan_drivergroup WHERE user_mid=#{param1};
+</delete>
+<delete id="delplan" parameterType="com.example.didi.Controller.JiedanbaodelController">
+    DELETE FROM man_opph_plan.opph_plan_driverplan WHERE user_mid=#{param1};
+</delete>
+<delete id="delamount" parameterType="com.example.didi.Controller.JiedanbaodelController">
+    DELETE FROM man_opph_plan.opph_plan_init_amount WHERE mid=#{param1};
+</delete>
+<!--&lt;!&ndash; 更新 &ndash;&gt;-->
+<!--<update id="updateUser">-->
+<!--UPDATE user_data SET name=#{name},password=#{password},age=#{age} WHERE id=#{id}-->
+<!--</update>-->
+</mapper>
