@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8"/>
-	<title>小桔医疗</title>
+	<title>小桔医保</title>
 	<meta name="renderer" content="webkit"/>	
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>	
@@ -84,28 +84,36 @@
 	
 </section>
 <script type="text/javascript" src="/common/layui/layui.js"></script>
-<script type="text/javascript" src="/js/newslist.js"></script>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery.js"></script>
+
 <script type="text/javascript">
 
 	function delJiedanbao() {
 	    var mid = $("#mid").val();
         if(mid==""){
             alert("mid不能为空！")
-        }
+        }else {
             $.ajax({
                 type: "GET",
-                url: "/jiedanbao/del?mid="+mid,
-
-
+                url: "/jiedanbao/del?mid=" +mid,
+//                data: JSON.stringify({
+//                    "mid":mid,
+//                }),
+//                dataType: "json",
+//                contentType: "application/json; charset=utf-8",
                 success: function (data) {
-//                    if (data.errCode == 10000) {
+                    alert("1111")
                     $("#result"). html(data.result);
-//                    }
                 },
                 error: function (xhr) {
                     alert(xhr.status + ':' + xhr.statusText);
+                    alert("123")
                 }
+
             });
+        }
+
     }
 </script>
 </body>
