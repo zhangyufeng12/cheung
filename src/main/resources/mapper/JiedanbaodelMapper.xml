@@ -28,6 +28,10 @@
 <delete id="deldetail" parameterType="com.example.didi.Controller.JiedanbaodelController">
     DELETE FROM littleboyonlinetest.opph_ordercenter_pay_detail_${param2} WHERE user_mid=#{param1};
 </delete>
+<delete id="delproduct" parameterType="com.example.didi.Controller.JiedanbaodelController">
+    DELETE FROM littleboyonlinetest.opph_ordercenter_product_order_${param2} WHERE user_mid=#{param1};
+</delete>
+
 <delete id="dellog" parameterType="com.example.didi.Controller.JiedanbaodelController">
     DELETE FROM man_opph_plan.opph_plan_log WHERE user_mid=#{param1};
 </delete>
@@ -40,7 +44,18 @@
 <delete id="delamount" parameterType="com.example.didi.Controller.JiedanbaodelController">
     DELETE FROM man_opph_plan.opph_plan_init_amount WHERE mid=#{param1};
 </delete>
-<!--&lt;!&ndash; 更新 &ndash;&gt;-->
+
+
+<!--查询-->
+<select id="Querypolicy" parameterType="com.example.didi.Controller.JiedanbaodelController" resultType="HashMap">
+    select insurant_name,product_name,user_mobile,user_didi_id,status,pay_order_id,inscompany_name,max_insured_amount,insured_amount,premium,user_mid from
+    littleboyonlinetest.opph_ordercenter_policy_${param2} where user_mid=#{param1};
+</select>
+
+
+
+
+    <!--&lt;!&ndash; 更新 &ndash;&gt;-->
 <!--<update id="updateUser">-->
 <!--UPDATE user_data SET name=#{name},password=#{password},age=#{age} WHERE id=#{id}-->
 <!--</update>-->

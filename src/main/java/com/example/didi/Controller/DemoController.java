@@ -20,6 +20,13 @@ public class DemoController {
     public String JiedanbaoDel() {
         return "page/JiedanbaoDel";
     }
+    @RequestMapping(value = "page/PolicyQuery")
+    public String PolicyQuery() {
+        return "page/PolicyQuery";
+    }
+
+
+
     @RequestMapping(value = "page/login")
     public String login() {
         return "page/login";

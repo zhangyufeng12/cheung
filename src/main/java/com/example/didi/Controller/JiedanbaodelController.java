@@ -4,13 +4,22 @@ import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import com.example.didi.Service.JiedanbaodelService;
 
+import com.example.didi.domain.entity.PolicyEntity;
+import com.example.didi.domain.mapper.JiedanbaodelMapper;
 import com.sun.javafx.collections.MapListenerHelper;
+import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /*********
@@ -48,6 +57,7 @@ public class JiedanbaodelController {
             result1.put("DriverGroup", jiedanbaodelService.delgroup(mid));
             result1.put("DriverPlan", jiedanbaodelService.delplan(mid));
             result1.put("InitAmount", jiedanbaodelService.delamount(mid));
+            result1.put("Product",jiedanbaodelService.delproduct(mid));
 
             result.put("result", result1.toJSONString());
         }
@@ -56,12 +66,26 @@ public class JiedanbaodelController {
         return result;
     }
 
-    @RequestMapping("/jiedanbao/sel")
+    @RequestMapping("/jiedanbao/query")
     @ResponseBody
-    public String testReq1(HttpServletRequest request) throws JSONException {
-            String mid = request.getParameter("mid");
+    /*
+        JSONObject方法编写
+        2018.1.10
+     */
+//    public JSONObject search(HttpServletRequest request) throws Exception {
+//            String mid = request.getParameter("mid");
+//            JSONObject req = null;
+//            JSONObject result = new JSONObject();
+//              List<Map<String,String>> search = jiedanbaodelService.Querypolicy(mid);
+//              result.put("policy",search);
+//
+//              return result;
+//    }
 
-    return mid;
+
+    public List<PolicyEntity> QueryPolicy(HttpServletRequest request) throws Exception{
+        String mid = request.getParameter("mid");
+        List<PolicyEntity> result =jiedanbaodelService.QueryPolicy(mid);
+        return result;
     }
-
 }

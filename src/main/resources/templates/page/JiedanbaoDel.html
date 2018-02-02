@@ -19,10 +19,9 @@
 <section class="layui-larry-box">
 	<div class="larry-personal">
 	    <div class="layui-tab">
-
-	    	<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-        <legend>小桔医疗</legend>
-    </fieldset>
+			<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        		<legend>小桔医疗</legend>
+    		</fieldset>
     <div style="text-align: center; margin-top: 5px;">
         <table border="0px" align="center" style="width:100%;table-layout:fixed">
             <tr>
@@ -33,39 +32,39 @@
             
             
 		         <!-- 操作日志 -->
-    <form class="layui-form" action="">
+
 				  
 		<div class="layui-form-item">
 			<label class="layui-form-label">Mid</label>
 			<div class="layui-input-inline">
 				<input type="tel" id="mid"  placeholder="请输入mid" class="layui-input" />
-				   
 			</div>
-
 			<button class="layui-btn layui-btn-small layui-btn-primary" onclick="delJiedanbao()"><i class="layui-icon">&#xe640;删除</i></button>
 
 		</div>
-	</form>
+
 		<br></br>
 		<br></br>
 		<br></br>
+
  	<blockquote class="layui-elem-quote news_search">
 		<div class="layui-btn-group">
-
-			<a>说明：<i>根据mid，删除表{Policy,PayOrder,subOrder,PlanLog,plan_drivergroup,DriverPlan,pay_detail,plan_init_amound}中的数据！(分库分表)</i></a>
+			<a>说明：<i>根据mid，删除表{Policy,PayOrder,subOrder,Product,PlanLog,plan_drivergroup,DriverPlan,pay_detail,plan_init_amound}中的数据！(分库分表)</i></a>
 		</div>
 	</blockquote>
+
 		<br></br>
+
 		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
     		<legend>返回结果</legend>
     	</fieldset>
-    <div style="text-align: center; margin-top: 5px;">
-        <table border="0px" align="center" style="width:100%;table-layout:fixed">
-            <tr>
+    	<div style="text-align: center; margin-top: 5px;">
+        	<table border="0px" align="center" style="width:100%;table-layout:fixed">
+           	 <tr>
                 <td align="left" id="result" height="27"></td>
-            </tr>
+           	 </tr>
+        	</table>
 
-        </table>
         <br></br>
         <br></br>
         <br></br>
@@ -96,19 +95,18 @@
         }else {
             $.ajax({
                 type: "GET",
-                url: "/jiedanbao/del?mid=" +mid,
+                url: "/jiedanbao/del?mid="+mid,
 //                data: JSON.stringify({
 //                    "mid":mid,
 //                }),
 //                dataType: "json",
 //                contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                    alert("1111")
-                    $("#result"). html(data.result);
+                    $("#result"). html("删除成功!" + data.result);
                 },
                 error: function (xhr) {
                     alert(xhr.status + ':' + xhr.statusText);
-                    alert("123")
+                    alert("删除失败")
                 }
 
             });
