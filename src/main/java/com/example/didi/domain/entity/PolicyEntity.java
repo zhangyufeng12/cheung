@@ -1,6 +1,6 @@
 package com.example.didi.domain.entity;
 
-public class PolicyEntity {
+public class PolicyEntity{
     String insurant_name;      //被保人
     String product_name;       //产品名称
     String user_mobile;        //手机号

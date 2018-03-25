@@ -4,11 +4,16 @@ buildscript {
 	}
 	repositories {
 		maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+		maven { url 'http://artifactory.intra.xiaojukeji.com/artifactory/libs-release/' }
+		maven { url 'http://artifactory.intra.xiaojukeji.com/artifactory/libs-snapshot/' }
+		mavenCentral()
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
 }
+
+
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
@@ -17,26 +22,46 @@ apply plugin: 'org.springframework.boot'
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
 	maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-
+	maven { url 'http://artifactory.intra.xiaojukeji.com/artifactory/libs-release/' }
+	maven { url 'http://artifactory.intra.xiaojukeji.com/artifactory/libs-snapshot/' }
+	mavenCentral()
 }
 
+configurations {
+	all*.exclude module: 'spring-boot-starter-logging'
+}
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile 'org.springframework.boot:spring-boot-devtools'
 	compile 'mysql:mysql-connector-java'
 	compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:1.1.1"
 	compile group: 'com.alibaba', name: 'fastjson', version: '1.2.31'
 	//compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '1.5.4.RELEASE'
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '1.5.9.RELEASE'
+	// logging
+	compile 'org.springframework.boot:spring-boot-starter-log4j2'
 
+	// utils
 	compile 'org.apache.httpcomponents:httpmime:4.5.2'
 	compile 'commons-io:commons-io:2.5'
 	compile 'com.google.guava:guava:18.0'
 	compile 'org.apache.commons:commons-collections4:4.0'
+	// aop
+	compile 'org.aspectj:aspectjrt:1.8.9'
+	compile "org.aspectj:aspectjweaver:1.8.9"
+	//lombok
+	compile 'org.projectlombok:lombok:1.16.4'
 
+
+
+}
+jar {
+	baseName = 'demo'
 }

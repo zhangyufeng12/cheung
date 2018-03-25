@@ -34,7 +34,7 @@
                 <div class="layui-input-inline">
                     <input id="mid" value="" placeholder="请输入mid" class="layui-input search_input" type="text"/>
                 </div>
-                <button class="layui-btn" lay-filter="demo1" onclick="search()">查询</button>
+                <button class="layui-btn" onclick="searchPolicy()">查询</button>
             </div>
             <br></br>
             <br></br>
@@ -63,17 +63,14 @@
                         <th>最大保额</th>
                     </tr>
                     </thead>
+                    <table border="0px" align="center" style="width:100%;table-layout:fixed">
+                        <tr>
+                            <td align="center" id="result" height="27"></td>
+                        </tr>
+                    </table>
                 </table>
             </div>
 
-            <a>返回结果</a>
-            <div style="text-align: center; margin-top: 5px;">
-                <table border="0px" align="center" style="width:100%;table-layout:fixed">
-                    <tr>
-                        <td align="left" id="result" height="27"></td>
-                    </tr>
-                </table>
-            </div>
         </div>
     </div>
 </section>
@@ -84,7 +81,7 @@
 
 
 <script type="text/javascript">
-    function search() {
+    function searchPolicy() {
         var mid = $("#mid").val();
 //        var Data_List =date(PolicyEntity);
         if(mid==""){
@@ -95,8 +92,9 @@
                 url: "/jiedanbao/query?mid="+mid,
 
                 success: function (data) {
-                    if(data.result == ""){
+                    if(data.result == null){
                         $("#result"). html("查询结果为空");
+//                        alert("查询结果为空")
                     }else {
                         alert(data.result)
 
@@ -113,45 +111,6 @@
     }
 
 </script>
-<!--<script type="text/javascript">-->
-<!--layui.use(['jquery','layer','element','laypage'],function(){-->
-<!--window.jQuery = window.$ = layui.jquery;-->
-<!--window.layer = layui.layer;-->
-<!--var element = layui.element(),-->
-<!--laypage = layui.laypage;-->
-
-
-<!--laypage({-->
-<!--cont: 'page',-->
-<!--pages: 10 //总页数-->
-<!--,-->
-<!--groups: 5 //连续显示分页数-->
-<!--,-->
-<!--jump: function(obj, first) {-->
-<!--//得到了当前页，用于向服务端请求对应数据-->
-<!--var curr = obj.curr;-->
-<!--if(!first) {-->
-<!--//layer.msg('第 '+ obj.curr +' 页');-->
-<!--}-->
-<!--}-->
-<!--});-->
-
-<!--laypage({-->
-<!--cont: 'page2',-->
-<!--pages: 10 //总页数-->
-<!--,-->
-<!--groups: 5 //连续显示分页数-->
-<!--,-->
-<!--jump: function(obj, first) {-->
-<!--//得到了当前页，用于向服务端请求对应数据-->
-<!--var curr = obj.curr;-->
-<!--if(!first) {-->
-<!--//layer.msg('第 '+ obj.curr +' 页');-->
-<!--}-->
-<!--}-->
-<!--});-->
-<!--});-->
-<!--</script>-->
 
 
 </body>

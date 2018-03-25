@@ -27,6 +27,6 @@ public interface JiedanbaodelService {
     List<PolicyEntity> QueryPolicy(String mid);  //对象方法
 
 
-    //   public List<Map<String,String>> Querypolicy(String mid);  //json方法编写
+//       public List<Map<String,String>> Querypolicy(String mid);  //json方法编写
 
 }

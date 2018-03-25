@@ -14,7 +14,7 @@ public class DidiApplicationTests {
 	@Test
 	public void contextLoads() {
 		System.out.println("账务哈希：");
-		System.out.println(Objects.hash("288395888377380867")%1024);
+		System.out.println(Objects.hash("288396043759599638")%1024);
 	}
 
 }

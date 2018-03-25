@@ -87,7 +87,7 @@ public class JiedanbaodelServiceImpl implements JiedanbaodelService{
          json方法编写
          2018.1.10
         */
-
+//
 //        public List<Map<String,String>> Querypolicy(String mid){
 //        int obj = Objects.hashCode(Long.valueOf(mid) % 3);
 //        return jiedanbaodelMapper.Querypolicy(mid,obj);

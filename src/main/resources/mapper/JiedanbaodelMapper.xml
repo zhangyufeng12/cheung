@@ -47,7 +47,7 @@
 
 
 <!--查询-->
-<select id="Querypolicy" parameterType="com.example.didi.Controller.JiedanbaodelController" resultType="HashMap">
+<select id="QueryPolicy" parameterType="com.example.didi.Controller.JiedanbaodelController" resultType="HashMap">
     select insurant_name,product_name,user_mobile,user_didi_id,status,pay_order_id,inscompany_name,max_insured_amount,insured_amount,premium,user_mid from
     littleboyonlinetest.opph_ordercenter_policy_${param2} where user_mid=#{param1};
 </select>

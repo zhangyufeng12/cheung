@@ -30,10 +30,10 @@ public interface JiedanbaodelMapper {
      */
 
     //json方法编写
-   // public List<Map<String,String>> Querypolicy(String mid, int obj);
+//    public List<Map<String,String>> Querypolicy(String mid, int obj);
 
 
     //对象方法编写   对象类为policyEntity
-     public List<PolicyEntity> QueryPolicy(String mid,int obj);
+      List<PolicyEntity> QueryPolicy(String mid,int obj);
 
 }
