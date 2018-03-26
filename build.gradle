@@ -4,8 +4,8 @@ buildscript {
 	}
 	repositories {
 		maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-		maven { url 'http://artifactory.intra.xiaojukeji.com/artifactory/libs-release/' }
-		maven { url 'http://artifactory.intra.xiaojukeji.com/artifactory/libs-snapshot/' }
+//		maven { url 'http://artifactory.intra.xiaojukeji.com/artifactory/libs-release/' }
+//		maven { url 'http://artifactory.intra.xiaojukeji.com/artifactory/libs-snapshot/' }
 		mavenCentral()
 	}
 	dependencies {
@@ -62,6 +62,6 @@ dependencies {
 
 
 }
-jar {
-	baseName = 'demo'
-}
+//jar {
+//	baseName = 'demo'
+//}
