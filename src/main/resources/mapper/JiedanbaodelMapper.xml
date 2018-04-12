@@ -3,8 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.didi.domain.mapper.JiedanbaodelMapper">
-<!--&lt;!&ndash; 通过Id查找 &ndash;&gt;-->
-<!--<select id="getUserById" resultType="com.xiaoju.mt.qa.domain.User">-->
+
 <!--select * from user u where id=#{id}-->
 <!--</select>-->
 <!--&lt;!&ndash; 查询所有的User &ndash;&gt;-->
