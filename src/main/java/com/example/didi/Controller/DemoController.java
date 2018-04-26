@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /*
+    @zhangyufeng
+    2018.1
 *  thymeleaf类  控制页面展示
 * */
 @Controller
@@ -70,4 +72,11 @@ public class DemoController {
     public String linksAdd() {
         return "page/linksAdd";
     }
+
+    @RequestMapping(value = "page/redisreboot")
+    public String redisreboot() {
+        return "page/redisreboot";
+    }
+
+
 }

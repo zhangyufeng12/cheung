@@ -8,6 +8,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Map;
 
+/*
+* @zhangyufeng
+* 2017.10
+* */
+
 @Repository
 public interface JiedanbaodelMapper {
     /*

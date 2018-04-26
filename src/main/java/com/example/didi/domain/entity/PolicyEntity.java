@@ -1,4 +1,8 @@
 package com.example.didi.domain.entity;
+/*
+* @zhangyufeng
+* 2017.10
+* */
 
 public class PolicyEntity{
     String insurant_name;      //被保人
