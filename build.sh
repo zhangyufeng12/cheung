@@ -4,7 +4,7 @@
 # 1. This script only fits for springboot-gradle-build-jar-style project.
 # 2. DO NOT set version info in your build config, because I don't know how to deal with it
 
-JAVA_HOME="/home/xiaoju/tools/jdk1.8.0_144"
+JAVA_HOME="/home/xxxx/tools/jdk1.8.0_144"
 CLASSPATH="${JAVA_HOME}/lib/dt.jar:${JAVA_HOME}/lib/tools.jar"
 PATH="${JAVA_HOME}/bin:${PATH}"
 export JAVA_HOME CLASSPATH PATH
