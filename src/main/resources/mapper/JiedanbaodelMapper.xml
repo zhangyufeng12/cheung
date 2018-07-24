@@ -16,32 +16,48 @@
 <!--</insert>-->
 <!-- 删除 -->
 <delete id="delorder" parameterType="com.example.didi.Controller.JiedanbaodelController">
-    DELETE FROM littleboyonlinetest.opph_ordercenter_sub_order_${param2} WHERE user_mid=#{param1};
+    DELETE FROM littleboyonlinetest.opph_ordercenter_sub_order_${param2}
+    WHERE user_mid=#{param1};
 </delete>
+
 <delete id="delpay" parameterType="com.example.didi.Controller.JiedanbaodelController">
-    DELETE FROM littleboyonlinetest.opph_ordercenter_pay_order_${param2} WHERE user_mid=#{param1};
+    DELETE FROM littleboyonlinetest.opph_ordercenter_pay_order_${param2}
+    WHERE user_mid=#{param1};
 </delete>
+
 <delete id="delpolicy" parameterType="com.example.didi.Controller.JiedanbaodelController">
-    DELETE FROM littleboyonlinetest.opph_ordercenter_policy_${param2} WHERE user_mid=#{param1};
+    DELETE FROM littleboyonlinetest.opph_ordercenter_policy_${param2}
+    WHERE user_mid=#{param1};
 </delete>
+
 <delete id="deldetail" parameterType="com.example.didi.Controller.JiedanbaodelController">
-    DELETE FROM littleboyonlinetest.opph_ordercenter_pay_detail_${param2} WHERE user_mid=#{param1};
+    DELETE FROM littleboyonlinetest.opph_ordercenter_pay_detail_${param2}
+     WHERE user_mid=#{param1};
 </delete>
+
 <delete id="delproduct" parameterType="com.example.didi.Controller.JiedanbaodelController">
-    DELETE FROM littleboyonlinetest.opph_ordercenter_product_order_${param2} WHERE user_mid=#{param1};
+    DELETE FROM littleboyonlinetest.opph_ordercenter_product_order_${param2}
+    WHERE user_mid=#{param1};
 </delete>
 
 <delete id="dellog" parameterType="com.example.didi.Controller.JiedanbaodelController">
-    DELETE FROM man_opph_plan.opph_plan_log WHERE user_mid=#{param1};
+    DELETE FROM man_opph_plan.opph_plan_log
+    WHERE user_mid=#{param1};
 </delete>
+
 <delete id="delgroup" parameterType="com.example.didi.Controller.JiedanbaodelController">
-    DELETE FROM man_opph_plan.opph_plan_drivergroup WHERE user_mid=#{param1};
+    DELETE FROM man_opph_plan.opph_plan_drivergroup
+     WHERE user_mid=#{param1};
 </delete>
+
 <delete id="delplan" parameterType="com.example.didi.Controller.JiedanbaodelController">
-    DELETE FROM man_opph_plan.opph_plan_driverplan WHERE user_mid=#{param1};
+    DELETE FROM man_opph_plan.opph_plan_driverplan
+    WHERE user_mid=#{param1};
 </delete>
+
 <delete id="delamount" parameterType="com.example.didi.Controller.JiedanbaodelController">
-    DELETE FROM man_opph_plan.opph_plan_init_amount WHERE mid=#{param1};
+    DELETE FROM man_opph_plan.opph_plan_init_amount
+    WHERE mid=#{param1};
 </delete>
 
 

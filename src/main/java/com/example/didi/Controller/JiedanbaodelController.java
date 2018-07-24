@@ -19,7 +19,6 @@ import java.util.List;
  *
  */
 
-
 @Controller
 @RequestMapping("/")
 public class JiedanbaodelController {
@@ -75,6 +74,10 @@ public class JiedanbaodelController {
     public List<PolicyEntity> QueryPolicy(HttpServletRequest request) throws Exception{
         String mid = request.getParameter("mid");
         List<PolicyEntity> result =jiedanbaodelService.QueryPolicy(mid);
+//        if(result.size() ==0){
+//            result=null;
+//        }else
+//            return result;
         return result;
     }
 }
