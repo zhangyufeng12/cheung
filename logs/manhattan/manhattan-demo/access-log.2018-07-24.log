@@ -91,3 +91,8 @@
 - 0:0:0:0:0:0:0:1 - - [24/Jul/2018:14:45:04 +0800] "GET /jiedanbao/query?mid=100100045690 HTTP/1.1" 200 669 "http://localhost:8018/page/PolicyQuery.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36" 47
 - 0:0:0:0:0:0:0:1 - - [24/Jul/2018:15:01:32 +0800] "GET /jiedanbao/query?mid=100100045690 HTTP/1.1" 200 669 "-" "PostmanRuntime/7.1.1" 200
 - 10.0.109.246 - - [24/Jul/2018:15:11:08 +0800] "GET /jiedanbao/query?mid=100100045690&mid=100100045690 HTTP/1.1" 200 669 "-" "python-requests/2.19.0" 38
+- 10.0.109.246 - - [24/Jul/2018:15:11:45 +0800] "GET /jiedanbao/query?mid=100100045690&mid=10010004569 HTTP/1.1" 200 669 "-" "python-requests/2.19.0" 8
+- 10.0.109.246 - - [24/Jul/2018:15:13:24 +0800] "GET /jiedanbao/query?mid=100100045690&mid=100100045690 HTTP/1.1" 200 669 "-" "python-requests/2.19.0" 7
+- 10.0.109.246 - - [24/Jul/2018:15:14:43 +0800] "GET /jiedanbao/query?mid=100100045690&mid=100100045690 HTTP/1.1" 200 669 "-" "python-requests/2.19.0" 6
+- 10.0.109.246 - - [24/Jul/2018:15:17:51 +0800] "GET /jiedanbao/query?mid=100100045690&mid=100100045690 HTTP/1.1" 200 669 "-" "python-requests/2.19.0" 10
+- 10.0.109.246 - - [24/Jul/2018:15:18:36 +0800] "GET /jiedanbao/query?mid=100100045690&mid=100100045690 HTTP/1.1" 200 669 "-" "python-requests/2.19.0" 6
