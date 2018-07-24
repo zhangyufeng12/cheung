@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+	<meta charset="UTF-8"/>
+	<title>测试工具</title>
+  <meta name="renderer" content="webkit"/> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/> 
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"/> 
+  <meta name="apple-mobile-web-app-capable" content="yes"/>  
+  <meta name="format-detection" content="telephone=no"/> 
+	<link rel="stylesheet" type="text/css" href="common/layui/css/layui.css" media="all"/>
+	<link rel="stylesheet" type="text/css" href="common/bootstrap/css/bootstrap.css" media="all"/>
+	<link rel="stylesheet" type="text/css" href="common/global.css"/>
+	<link rel="stylesheet" type="text/css" href="css/main.css" media="all"/>
+</head>
+<body>
+<section class="larry-wrapper">
+
+    <!-- overview -->
+	<blockquote class="layui-elem-quote news_search">
+		<div class="layui-btn-group">
+			<a>Controller</a>
+		</div>
+	</blockquote>
+	<div class="row">
+		<div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+			<section class="panel">
+
+				<!--<div class="symbol layui-anim-rotate" style="background-color:#0b94ea;"> <i class="iconpx-users"></i>-->
+				<!--</div>-->
+				<div class="value">
+					<a href="#">
+						<h1 id="count1">zhangyufeng_v</h1>
+					</a>
+					<p>email</p>
+				</div>
+			</section>
+		</div>
+		<div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+			<section class="panel">
+				<!--<div class="symbol layui-anim-rotate" style="background-color:#FF5722;"> <i class="iconpx-user-add"></i>-->
+				<!--</div>-->
+
+				<div class="value">
+					<a href="#">
+						<h1 id="count2">demo</h1>
+					</a>
+					<p>测试工具</p>
+				</div>
+			</section>
+		</div>
+		<div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+			<section class="panel">
+				<!--<div class="symbol layui-anim-rotate" style="background-color:#009688;">-->
+					<!--<i class="iconpx-file-word-o"></i>-->
+				<!--</div>-->
+				<div class="value">
+					<a href="#">
+						<h1 id="count3">10.95.120.55</h1>
+					</a>
+					<p>所用数据库</p>
+				</div>
+			</section>
+		</div>
+		<div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+			<section class="panel">
+				<!--<div class="symbol layui-anim-rotate" style="background-color:#2F4056;">-->
+					<!--<i class="iconpx-check-circle"></i>-->
+				<!--</div>-->
+				<div class="value">
+					<a href="#">
+						<h1 id="count4">2018.4.25</h1>
+					</a>
+					<p>最近修改日期</p>
+				</div>
+			</section>
+		</div>
+
+		<!--<blockquote class="layui-elem-quote layui-quote-nm">-->
+			<!--数据库：-->
+			<!--<span class="layui-badge-rim">10.95.120.55</span>-->
+			<!--<br></br>最近修改日期：-->
+			<!--<span class="layui-badge-rim">2018.1.10</span>-->
+			<!--<br></br>邮箱：-->
+			<!--<span class="layui-badge-rim">zhangyufeng_v</span>-->
+		<!--</blockquote>-->
+	</div>
+<blockquote class="layui-elem-quote news_search">
+    <div class="layui-btn-group">
+
+      <a>服务架构</a>
+    </div>
+  </blockquote>
+ <!-- 架构 -->
+  <div>
+    <img src="images/system.png" />
+  </div>
+    
+
+</section>
+
+<script type="text/javascript" src="common/layui/layui.js"></script>
+<script type="text/javascript">
+	layui.use(['jquery','layer','element'],function(){
+		window.jQuery = window.$ = layui.jquery;
+		window.layer = layui.layer;
+        window.element = layui.element();
+
+       $('.panel .tools .iconpx-chevron-down').click(function(){
+       	   var el = $(this).parents(".panel").children(".panel-body");
+       	   if($(this).hasClass("iconpx-chevron-down")){
+       	   	   $(this).removeClass("iconpx-chevron-down").addClass("iconpx-chevron-up");
+       	   	   el.slideUp(200);
+       	   }else{
+       	   	   $(this).removeClass("iconpx-chevron-up").addClass("iconpx-chevron-down");
+       	   	   el.slideDown(200);
+       	   }
+       })
+
+	});
+</script>
+
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery.js"></script>
+</body>
+</html>
