@@ -5,19 +5,18 @@ package com.example.didi.Service;
 * 2017.10
 * */
 
-import com.example.didi.domain.entity.JiedanbaodelDO;
 import com.example.didi.domain.entity.PolicyEntity;
 import com.example.didi.domain.mapper.JiedanbaodelMapper;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 @Service("JiedanbaodelService")
 public class JiedanbaodelServiceImpl implements JiedanbaodelService{
+    private Logger log= Logger.getLogger(JiedanbaodelServiceImpl.class);
     @Resource
     private JiedanbaodelMapper jiedanbaodelMapper;
     /*
@@ -28,13 +27,13 @@ public class JiedanbaodelServiceImpl implements JiedanbaodelService{
     public int delorder(String mid) {
         //分库分表
         int obj = Objects.hashCode(Long.valueOf(mid) % 3);
-        System.out.println("suborder:" + obj);
+//        System.out.println("suborder:" + obj);
         return jiedanbaodelMapper.delorder(mid,obj);
     }
 
     public int delpay(String mid) {
         int obj = Objects.hashCode(Long.valueOf(mid) % (3));
-        System.out.println("payorder：" + obj);
+//        System.out.println("payorder：" + obj);
         return jiedanbaodelMapper.delpay(mid,obj);
     }
 
@@ -43,12 +42,12 @@ public class JiedanbaodelServiceImpl implements JiedanbaodelService{
         //账务哈希
         //System.out.println(Objects.hash("288395852848988217")%1024);
 
-        System.out.println("policy:" +obj);
+//        System.out.println("policy:" +obj);
         return jiedanbaodelMapper.delpolicy(mid,obj);
     }
     public int deldetail(String mid) {
         int obj = Objects.hashCode(Long.valueOf(mid) % (3));
-        System.out.println("paydetail:" +  obj);
+//        System.out.println("paydetail:" +  obj);
         return jiedanbaodelMapper.deldetail(mid, obj);
     }
     public int delproduct(String mid){
@@ -82,6 +81,7 @@ public class JiedanbaodelServiceImpl implements JiedanbaodelService{
     @Override
     public List<PolicyEntity> QueryPolicy(String mid) {
         int obj = Objects.hashCode(Long.valueOf(mid) % 3);
+        log.info("分库分表信息为库："+ obj);
         return jiedanbaodelMapper.QueryPolicy(mid,obj);
     }
 

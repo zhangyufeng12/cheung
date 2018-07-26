@@ -4,9 +4,11 @@ import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import com.example.didi.Service.JiedanbaodelService;
 import com.example.didi.domain.entity.PolicyEntity;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -22,6 +24,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/")
 public class JiedanbaodelController {
+
+    private Logger log =Logger.getLogger(JiedanbaodelController.class);
     @Resource
     private JiedanbaodelService jiedanbaodelService;
 
@@ -36,6 +40,7 @@ public class JiedanbaodelController {
         JSONObject result = new JSONObject();
         if (mid==""){
             result.put("result","mid不能为空");
+            log.error("mid不能为空");
         } else {
             result1.put("subOrder", jiedanbaodelService.delorder(mid));
             result1.put("PayOrder", jiedanbaodelService.delpay(mid));
@@ -78,6 +83,8 @@ public class JiedanbaodelController {
 //            result=null;
 //        }else
 //            return result;
+        log.info("入参为:"+"mid="+mid);
+        log.info("参数返回："+result);
         return result;
     }
 }
