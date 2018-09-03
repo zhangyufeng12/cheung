@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.didi.domain.mapper.Approval58Mapper">
+
+    <!--查询-->
+    <select id="SearchApproval" parameterType="com.example.didi.Controller.Approval58Controller" resultType="HashMap">
+        select a.`approval_type` as 审核类型,a.`approval_status` as 审核状态,a.`custom_id` as 商家id,a.`org_id` as 机构id,a.`intoArtificialApprovalReason`
+        as 进入人工审核原因,o.`face_certify_status` as 人脸认证状态 from tc_approval a join  tc_org o  on o.id=a.`org_id`  where o.`contact_phone`=#{param1}
+        and  a.`approval_type`=2;
+    </select>
+
+
+
+    <!--修改-->
+    <update id="Approval_status"  parameterType="com.example.didi.Controller.Approval58Controller">
+     update tc_approval SET approval_status= #{param2} WHERE custom_id= #{param1}  AND approval_type= 2 AND org_id > 0;
+
+    </update>
+</mapper>

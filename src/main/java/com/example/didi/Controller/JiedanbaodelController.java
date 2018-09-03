@@ -2,7 +2,7 @@ package com.example.didi.Controller;
 
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
-import com.example.didi.Service.JiedanbaodelService;
+import com.example.didi.Service.ServiceImpl.JiedanbaodelService;
 import com.example.didi.domain.entity.PolicyEntity;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -79,10 +79,7 @@ public class JiedanbaodelController {
     public List<PolicyEntity> QueryPolicy(HttpServletRequest request) throws Exception{
         String mid = request.getParameter("mid");
         List<PolicyEntity> result =jiedanbaodelService.QueryPolicy(mid);
-//        if(result.size() ==0){
-//            result=null;
-//        }else
-//            return result;
+
         log.info("入参为:"+"mid="+mid);
         log.info("参数返回："+result);
         return result;

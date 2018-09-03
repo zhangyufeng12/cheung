@@ -5,6 +5,7 @@ package com.example.didi.Service;
 * 2017.10
 * */
 
+import com.example.didi.Service.ServiceImpl.JiedanbaodelService;
 import com.example.didi.domain.entity.PolicyEntity;
 import com.example.didi.domain.mapper.JiedanbaodelMapper;
 import org.apache.log4j.Logger;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Service("JiedanbaodelService")
-public class JiedanbaodelServiceImpl implements JiedanbaodelService{
+public class JiedanbaodelServiceImpl implements JiedanbaodelService {
     private Logger log= Logger.getLogger(JiedanbaodelServiceImpl.class);
     @Resource
     private JiedanbaodelMapper jiedanbaodelMapper;

@@ -51,4 +51,7 @@ mybatis:
   typeAliasesPackage: com.example.didi.domain.*
   mapperLocations: classpath:mapper/*.xml
 
+#  typeAliasesPackage: com.example.didi.domain.mapper.Jiedanbaodel*
+#  mapperLocations: classpath:mapper/JiedanbaodelMapper.xml
+
 

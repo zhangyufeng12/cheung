@@ -7,6 +7,8 @@ package com.example.didi;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.example.didi.tools.Head;
+import com.example.didi.tools.HttpUtil;
 import org.junit.Test;
 import org.testng.Assert;
 
