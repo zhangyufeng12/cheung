@@ -6,7 +6,7 @@
 
     <!--查询-->
     <select id="SearchApproval" parameterType="com.example.didi.Controller.Approval58Controller" resultType="HashMap">
-        select a.`approval_type` as 审核类型,a.`approval_status` as 审核状态,a.`custom_id` as 商家id,a.`org_id` as 机构id,a.`intoArtificialApprovalReason`
+        select a.`approval_type` as 审核类型,a.`approval_status` as 审核状态,a.`custom_id` as 商家id,a.`org_id` as 机构id,a.`into_approval_reason`
         as 进入人工审核原因,o.`face_certify_status` as 人脸认证状态 from tc_approval a join  tc_org o  on o.id=a.`org_id`  where o.`contact_phone`=#{param1}
         and  a.`approval_type`=2;
     </select>

@@ -6,7 +6,6 @@ package com.example.didi.Controller;
 
 import com.example.didi.Service.ApprovalServiceImpl;
 import com.example.didi.domain.entity.ApprovalEntity;
-import com.example.didi.tools.ValidateUtils;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,15 +47,15 @@ public class Approval58Controller {
         String custom =request.getParameter("custom");
         String approval_status=request.getParameter("approval_status");
 
-        Boolean Validate = ValidateUtils.Negative_integer(custom);
-        if (Validate == false){
-            return 0;
-        }
+//        Boolean Validate = ValidateUtils.Negative_integer(custom);
+//        if (Validate == false){
+//            return 0;
+//        }
         LOGGER.info("商家id={}，状态={}",custom,approval_status);
 
-        int search =approvalService.Approval_status(Long.valueOf(custom), Integer.parseInt(approval_status));
+        int result =approvalService.Approval_status(Long.valueOf(custom), Integer.parseInt(approval_status));
 
-        return search;
+        return result;
     }
 
 }
