@@ -9,8 +9,10 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.didi.tools.Head;
 import com.example.didi.tools.HttpUtil;
+import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 
 import java.util.HashMap;
 
@@ -19,9 +21,9 @@ public class Junit_test {
 
     private HttpUtil ConnectLink = new HttpUtil();
     private Head head = new Head();
+    private Logger log =  Logger.getLogger(Junit_test.class);
 
-
-
+    //Junit
     @Test
     public void coupon_productserver() {
         String result = ConnectLink.doPost("https://discovery-dop80b.djtest.cn" +
@@ -46,13 +48,12 @@ public class Junit_test {
 
 }
 
+    //testng
+    @org.testng.annotations.Test(dataProvider = "test")
+    public void test_junit(String mid){
+        String result = ConnectLink.doGet("http://localhost:8018/jiedanbao/query?mid="+mid);
 
-
-    @Test()
-    public void test_junit(){
-        String result = ConnectLink.doGet("http://localhost:8018/jiedanbao/query?mid=100100045690");
-
-        System.out.println(result);
+        log.info("测试返回结果为："+result);
 
         try {
 
@@ -81,6 +82,12 @@ public class Junit_test {
 
     }
 
-
+    @DataProvider
+    public  Object[][] test() {
+        return new Object[][]{
+                {"100100045690"},
+                {"1234"}
+        };
+    }
 
 }
