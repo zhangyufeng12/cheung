@@ -5,9 +5,13 @@ package com.example.didi.Service;
 * 2017.10
 * */
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.example.didi.Service.ServiceImpl.JiedanbaodelService;
 import com.example.didi.domain.entity.PolicyEntity;
 import com.example.didi.domain.mapper.JiedanbaodelMapper;
+import com.example.didi.tools.HttpUtil;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
@@ -81,13 +85,7 @@ public class JiedanbaodelServiceImpl implements JiedanbaodelService {
 
     @Override
     public List<PolicyEntity> QueryPolicy(String mid) {
-
-        //通过接口获取phone值
-//        String result = new HttpUtil().doGet("");
-//        JSONArray json = JSON.parseArray(result);
-//        JSONObject index = json.getJSONObject(0);
-//        String phone = index.getString("phone");
-//
+//        String mid = ApiGetMid(phone);
         int obj = Objects.hashCode(Long.valueOf(mid) % 3);
         log.info("分库分表信息为库："+ obj);
         return jiedanbaodelMapper.QueryPolicy(mid,obj);
@@ -105,6 +103,18 @@ public class JiedanbaodelServiceImpl implements JiedanbaodelService {
 //        return jiedanbaodelMapper.Querypolicy(mid,obj);
 //    }
 
+
+    //通过接口根据Phone获取mid值
+    public String ApiGetMid(String phone){
+
+        String result = new HttpUtil().doGet(""+phone);
+        JSONArray json = JSON.parseArray(result);
+        JSONObject index = json.getJSONObject(0);
+        String mid = index.getString("mid");
+
+        return mid;
+
+    }
 
 
 }

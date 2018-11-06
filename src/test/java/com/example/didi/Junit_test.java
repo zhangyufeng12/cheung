@@ -55,30 +55,28 @@ public class Junit_test {
 
         log.info("测试返回结果为："+result);
 
-        try {
+
 
             /* 格式转换  String -->Jsonarray
                  获取数组中角标为0的元素
                     断言其中user_didi_id=566384711241728*/
 
-            JSONArray json = JSON.parseArray(result);
-            JSONObject index = json.getJSONObject(0);
-            String id = index.getString("user_didi_id");
+        JSONArray json = JSON.parseArray(result);
+            if(json.size()>0){
+
+                JSONObject index = json.getJSONObject(0);
+                String id = index.getString("user_didi_id");
 
 //            //打印id值
 //            System.out.println("--------------");
 //            String mid =id.toString();
 //            System.out.println(mid);
 
-            Assert.assertEquals(id, "566384711241728");
+                Assert.assertEquals(id, "566384711241728");
+            }else
+                Assert.assertEquals(1,0);
 
-
-
-        }catch (AssertionError e){
-            e.printStackTrace();
-        }finally {
-            System.out.println("over!");
-        }
+            log.info("over!");
 
     }
 
