@@ -58,7 +58,7 @@ public class Junit_test {
         try {
 
             /* 格式转换  String -->Jsonarray
-                 获取角标为0的数组
+                 获取数组中角标为0的元素
                     断言其中user_didi_id=566384711241728*/
 
             JSONArray json = JSON.parseArray(result);

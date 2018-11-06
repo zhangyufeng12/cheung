@@ -81,6 +81,13 @@ public class JiedanbaodelServiceImpl implements JiedanbaodelService {
 
     @Override
     public List<PolicyEntity> QueryPolicy(String mid) {
+
+        //通过接口获取phone值
+//        String result = new HttpUtil().doGet("");
+//        JSONArray json = JSON.parseArray(result);
+//        JSONObject index = json.getJSONObject(0);
+//        String phone = index.getString("phone");
+//
         int obj = Objects.hashCode(Long.valueOf(mid) % 3);
         log.info("分库分表信息为库："+ obj);
         return jiedanbaodelMapper.QueryPolicy(mid,obj);
@@ -97,5 +104,7 @@ public class JiedanbaodelServiceImpl implements JiedanbaodelService {
 //        int obj = Objects.hashCode(Long.valueOf(mid) % 3);
 //        return jiedanbaodelMapper.Querypolicy(mid,obj);
 //    }
+
+
 
 }
