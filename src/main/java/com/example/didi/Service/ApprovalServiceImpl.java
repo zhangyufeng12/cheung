@@ -40,7 +40,8 @@ public class ApprovalServiceImpl implements ApprovalService{
 
         TcRespDto<ApprovalDto> tcRespDto = new TcRespDto<ApprovalDto>();
 
-        if (ApprovalEnum.getApprovalStatusEnum(approval_status) == 0) {
+        if (ApprovalEnum.getApprovalStatusEnum(approval_status) == 0 ||
+                 ApprovalEnum.getApprovalStatusEnum(approval_status)>=4) {
             tcRespDto.setErrorMessage("Status错误:code不存在 ：" + approval_status);
             return 0;
         }
