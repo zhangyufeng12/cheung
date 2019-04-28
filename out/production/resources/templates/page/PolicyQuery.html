@@ -41,7 +41,6 @@
             <br></br>
             <!-- 操作日志 -->
 
-
             <div class="layui-tab-item layui-field-box layui-show">
                 <table class="layui-table table-hover" lay-even="">
                     <thead>
@@ -62,22 +61,22 @@
                     </thead>
 
                     <tbody  id="que">
-                        <!--<tr>-->
-                            <!--<td align="center" height="27">100100045690</td>-->
-                            <!--<td align="center" height="27">566384711241728</td>-->
-                            <!--<td align="center" height="27">司机端</td>-->
-                            <!--<td align="center" height="27">13000054446</td>-->
-                            <!--<td align="center" height="27">众安在线</td>-->
-                            <!--<td align="center" height="27">再来一单妥妥滴</td>-->
-                            <!--<td align="center" height="27">3</td>-->
-                            <!--<td align="center" height="27">288192312747142190471024</td>-->
-                            <!--<td align="center" height="27">4000.00</td>-->
-                            <!--<td align="center" height="27">5000.00</td>-->
-                            <!--<td align="center" height="27">9999.00</td>-->
-                        <!--</tr>-->
+                    <!--<tr>-->
+                    <!--<td align="center" height="27">100100045690</td>-->
+                    <!--<td align="center" height="27">566384711241728</td>-->
+                    <!--<td align="center" height="27">司机端</td>-->
+                    <!--<td align="center" height="27">13000054446</td>-->
+                    <!--<td align="center" height="27">众安在线</td>-->
+                    <!--<td align="center" height="27">再来一单妥妥滴</td>-->
+                    <!--<td align="center" height="27">3</td>-->
+                    <!--<td align="center" height="27">288192312747142190471024</td>-->
+                    <!--<td align="center" height="27">4000.00</td>-->
+                    <!--<td align="center" height="27">5000.00</td>-->
+                    <!--<td align="center" height="27">9999.00</td>-->
+                    <!--</tr>-->
                     </tbody>
                     <!--<table>-->
-                        <!--<td align="center" id="result" height="27"></td>-->
+                    <!--<td align="center" id="result" height="27"></td>-->
                     <!--</table>-->
                 </table>
             </div>
@@ -108,25 +107,25 @@
 //                        alert("查询结果为空");
                     }else {
 
-                    var a=null;
-                    $.each(eval(data),function (index,resultData) {
-                        a+='<tr><td align="center" height="27">'+index +'</td>' +
-                            '<td align="center" height="27">'+resultData.user_mid+'</td>'+
-                            '<td align="center" height="27">'+resultData.user_didi_id+'</td>'+
-                            '<td align="center" height="27">'+resultData.insurant_name+'</td>'+
-                            '<td align="center" height="27">'+resultData.user_mobile+'</td>'+
-                            '<td align="center" height="27">'+resultData.inscompany_name+'</td>'+
-                            '<td align="center" height="27">'+resultData.product_name+'</td>'+
-                            '<td align="center" height="27">'+resultData.status+'</td>'+
-                            '<td align="center" height="27">'+resultData.pay_order_id+'</td>'+
-                            '<td align="center" height="27">'+resultData.premium+'</td>'+
-                            '<td align="center" height="27">'+resultData.insured_amount+'</td>'+
-                            '<td align="center" height="27">'+resultData.max_insured_amount+'</td></tr>';
-                    })
+                        var a=null;
+                        $.each(eval(data),function (index,resultData) {
+                            a+='<tr><td align="center" height="27">'+index +'</td>' +
+                                '<td align="center" height="27">'+resultData.user_mid+'</td>'+
+                                '<td align="center" height="27">'+resultData.user_didi_id+'</td>'+
+                                '<td align="center" height="27">'+resultData.insurant_name+'</td>'+
+                                '<td align="center" height="27">'+resultData.user_mobile+'</td>'+
+                                '<td align="center" height="27">'+resultData.inscompany_name+'</td>'+
+                                '<td align="center" height="27">'+resultData.product_name+'</td>'+
+                                '<td align="center" height="27">'+resultData.status+'</td>'+
+                                '<td align="center" height="27">'+resultData.pay_order_id+'</td>'+
+                                '<td align="center" height="27">'+resultData.premium+'</td>'+
+                                '<td align="center" height="27">'+resultData.insured_amount+'</td>'+
+                                '<td align="center" height="27">'+resultData.max_insured_amount+'</td></tr>';
+                        })
 
                         $("#que").html(a);
 
-                   }
+                    }
                 },
                 error: function (xhr) {
                     alert(xhr.status + ':' + xhr.statusText);

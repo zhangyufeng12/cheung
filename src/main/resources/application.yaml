@@ -50,6 +50,8 @@ server:
 mybatis:
   typeAliasesPackage: com.example.didi.domain.*
   mapperLocations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
 
 #  typeAliasesPackage: com.example.didi.domain.mapper.Jiedanbaodel*
 #  mapperLocations: classpath:mapper/JiedanbaodelMapper.xml

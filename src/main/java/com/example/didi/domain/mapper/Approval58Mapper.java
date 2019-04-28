@@ -5,6 +5,7 @@ package com.example.didi.domain.mapper;
 */
 
 import com.example.didi.domain.entity.ApprovalEntity;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,9 +13,7 @@ import java.util.List;
 @Repository
 public interface Approval58Mapper {
 
-    List<ApprovalEntity> SearchApproval( String phone );
+    List<ApprovalEntity> SearchApproval(@Param( "phone" ) String phone );
 
-
-    int Approval_status( Long custom , int approval_status);
-
+    int Approval_status(@Param("custom") Long custom , int approval_status);
 }

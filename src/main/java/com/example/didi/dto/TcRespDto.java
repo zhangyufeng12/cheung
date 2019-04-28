@@ -8,9 +8,6 @@ import com.alibaba.fastjson.JSONObject;
 
 import java.io.Serializable;
 
-/**
- * Created by shensulu on 2018/6/11.
- */
 public class TcRespDto<T> implements Serializable {
     private Boolean result;
     private String errorCode;

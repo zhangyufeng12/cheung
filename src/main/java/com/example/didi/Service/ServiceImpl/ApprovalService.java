@@ -13,9 +13,8 @@ public interface ApprovalService {
     //查询
     List<ApprovalEntity> SearchApproval( String phone );
 
-
     //修改
-    int Approval_status(Long custom ,int approval_status);
+    String Approval_status(String phone ,int approval_status);
 
 
 }

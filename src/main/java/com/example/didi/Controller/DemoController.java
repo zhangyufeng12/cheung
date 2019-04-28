@@ -29,7 +29,6 @@ public class DemoController {
     }
 
 
-
     @RequestMapping(value = "page/login")
     public String login() {
         return "page/login";
@@ -58,4 +57,10 @@ public class DemoController {
 
     @RequestMapping(value = "page/ApprovalUpdate")
     public String ApprovalUpdate(){return "page/ApprovalUpdate";}
+
+    @RequestMapping(value = "page/TradeSearch")
+    public String TradeSearch(){return "page/TradeSearch";}
+
+    @RequestMapping(value = "page/TradeInsert")
+    public String TradeInsert(){return "page/TradeInsert";}
 }

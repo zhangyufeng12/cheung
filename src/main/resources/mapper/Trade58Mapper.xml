@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.didi.domain.mapper.Trade58Mapper">
+
+    <!--查询-->
+    <select id="SearchTrade" parameterType="com.example.didi.Controller.Trade58Controller" resultType="com.example.didi.domain.entity.TradeEntity">
+        select * from tc_trade where order_id=#{param1};
+    </select>
+
+    <!--&lt;!&ndash; 添加 &ndash;&gt;-->
+    <insert id="AddTrade" parameterType="com.example.didi.Controller.Trade58Controller">
+       INSERT INTO `tc_trade` (`order_id`, `business_id`, `category_id`, `service_id`, `user_id`, `seller_id`, `city_id`, `trade_status`, `order_price`, `settle_price`,
+        `receivable_price`, `need_price`, `service_time`, `service_price`, `addition_price`, `advance_ratio`, `has_paid_amount`, `cash_paid_amount`, `online_paid_amount`,
+         `discount_amount`, `refund_amount`, `fine_amount`, `extend_param`, `update_time`, `create_time`)VALUES (#{orderid}, '101', '3252', '1', #{userid},
+          '348836228761726', '1', '1', '0.01', '0.01', '0.00', '0.01', '2019-04-19 08:00:00', '0.01', '0.00', '1', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '',
+           '2019-04-19 14:44:51', '2018-09-13 17:18:09');
+    </insert>
+
+</mapper>

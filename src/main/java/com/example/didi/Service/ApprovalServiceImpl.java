@@ -28,7 +28,9 @@ public class ApprovalServiceImpl implements ApprovalService{
     //查询
     @Override
     public List<ApprovalEntity> SearchApproval( String phone ) {
-
+        if (phone==""||phone==null){
+            return null;
+        }
         return approval58Mapper.SearchApproval(phone);
     }
 
@@ -36,19 +38,43 @@ public class ApprovalServiceImpl implements ApprovalService{
     //修改
 
     @Override
-    public int Approval_status( Long custom, int approval_status ) {
+    public String Approval_status( String phone, int approval_status ) {
 
         TcRespDto<ApprovalDto> tcRespDto = new TcRespDto<ApprovalDto>();
 
-        if (ApprovalEnum.getApprovalStatusEnum(approval_status) == 0 ||
-                 ApprovalEnum.getApprovalStatusEnum(approval_status)>=4) {
-            tcRespDto.setErrorMessage("Status错误:code不存在 ：" + approval_status);
-            return 0;
+        //判断所要修改数据是否存在
+        if (SearchApproval( phone ).size() == 0) {
+            return ApprovalEnum.NON.getMsg();
         }
 
-        return approval58Mapper.Approval_status(custom,approval_status);
-    }
+        //合法状态范围 1-3
+        if (ApprovalEnum.getApprovalStatusEnum(approval_status) == 0 ||
+                ApprovalEnum.getApprovalStatusEnum(approval_status)>=4) {
+            tcRespDto.setErrorMessage("Status错误:code不存在 ：" + approval_status);
+            return ApprovalEnum.EXCE.getMsg();
+        }
 
+        Long custom = SearchApproval(phone).get(0).getCustomId();
+
+        //获取custom不能为空
+        if (custom==null){
+            return ApprovalEnum.NULL.getMsg();
+        }
+
+        int approval = approval58Mapper.Approval_status( custom, approval_status );
+        //返回更改状态
+        if (approval != 0 && approval_status == 1) {
+            return ApprovalEnum.WAIT.getMsg();
+        }
+        if (approval != 0 && approval_status == 2) {
+            return ApprovalEnum.SUCCESS.getMsg();
+        }
+        if (approval != 0 && approval_status == 3) {
+            return ApprovalEnum.LOSE.getMsg();
+        }
+
+        return ApprovalEnum.FAIL.getMsg();
+    }
 
 
 }
