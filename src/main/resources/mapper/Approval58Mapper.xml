@@ -14,7 +14,7 @@
 
     <!--修改-->
     <update id="Approval_status">
-     update tc_approval SET approval_status= #{param2} WHERE custom_id= #{custom}  AND approval_type= 2 AND org_id > 0;
+     update tc_approval SET approval_status= #{approval_status} WHERE custom_id= #{custom}  AND approval_type= 2 AND org_id > 0;
 
     </update>
 </mapper>

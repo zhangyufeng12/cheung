@@ -5,12 +5,13 @@
 <mapper namespace="com.example.didi.domain.mapper.Trade58Mapper">
 
     <!--查询-->
-    <select id="SearchTrade" parameterType="com.example.didi.Controller.Trade58Controller" resultType="com.example.didi.domain.entity.TradeEntity">
+    <select id="SearchTrade" parameterType="Long"
+            resultType="com.example.didi.domain.entity.TradeEntity">
         select * from tc_trade where order_id=#{param1};
     </select>
 
     <!--&lt;!&ndash; 添加 &ndash;&gt;-->
-    <insert id="AddTrade" parameterType="com.example.didi.Controller.Trade58Controller">
+    <insert id="AddTrade" parameterType="Long">
        INSERT INTO `tc_trade` (`order_id`, `business_id`, `category_id`, `service_id`, `user_id`, `seller_id`, `city_id`, `trade_status`, `order_price`, `settle_price`,
         `receivable_price`, `need_price`, `service_time`, `service_price`, `addition_price`, `advance_ratio`, `has_paid_amount`, `cash_paid_amount`, `online_paid_amount`,
          `discount_amount`, `refund_amount`, `fine_amount`, `extend_param`, `update_time`, `create_time`)VALUES (#{orderid}, '101', '3252', '1', #{userid},

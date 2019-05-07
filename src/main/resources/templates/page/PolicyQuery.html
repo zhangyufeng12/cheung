@@ -60,7 +60,7 @@
                     </tr>
                     </thead>
 
-                    <tbody  id="que">
+                    <tbody id="que">
                     <!--<tr>-->
                     <!--<td align="center" height="27">100100045690</td>-->
                     <!--<td align="center" height="27">566384711241728</td>-->
@@ -94,33 +94,33 @@
     function searchPolicy() {
         var mid = $("#mid").val();
 
-        if(mid==""){
+        if (mid == "") {
             alert("mid不能为空！")
-        }else {
+        } else {
             $.ajax({
                 type: "GET",
-                url: "/jiedanbao/query?mid="+mid,
+                url: "/jiedanbao/query?mid=" + mid,
 
                 success: function (data) {
-                    if(data == ""){
-                        $("#que"). html("查询结果为空");
+                    if (data == "") {
+                        $("#que").html("查询结果为空");
 //                        alert("查询结果为空");
-                    }else {
+                    } else {
 
-                        var a=null;
-                        $.each(eval(data),function (index,resultData) {
-                            a+='<tr><td align="center" height="27">'+index +'</td>' +
-                                '<td align="center" height="27">'+resultData.user_mid+'</td>'+
-                                '<td align="center" height="27">'+resultData.user_didi_id+'</td>'+
-                                '<td align="center" height="27">'+resultData.insurant_name+'</td>'+
-                                '<td align="center" height="27">'+resultData.user_mobile+'</td>'+
-                                '<td align="center" height="27">'+resultData.inscompany_name+'</td>'+
-                                '<td align="center" height="27">'+resultData.product_name+'</td>'+
-                                '<td align="center" height="27">'+resultData.status+'</td>'+
-                                '<td align="center" height="27">'+resultData.pay_order_id+'</td>'+
-                                '<td align="center" height="27">'+resultData.premium+'</td>'+
-                                '<td align="center" height="27">'+resultData.insured_amount+'</td>'+
-                                '<td align="center" height="27">'+resultData.max_insured_amount+'</td></tr>';
+                        var a = null;
+                        $.each(eval(data), function (index, resultData) {
+                            a += '<tr><td align="center" height="27">' + index + '</td>' +
+                                '<td align="center" height="27">' + resultData.user_mid + '</td>' +
+                                '<td align="center" height="27">' + resultData.user_didi_id + '</td>' +
+                                '<td align="center" height="27">' + resultData.insurant_name + '</td>' +
+                                '<td align="center" height="27">' + resultData.user_mobile + '</td>' +
+                                '<td align="center" height="27">' + resultData.inscompany_name + '</td>' +
+                                '<td align="center" height="27">' + resultData.product_name + '</td>' +
+                                '<td align="center" height="27">' + resultData.status + '</td>' +
+                                '<td align="center" height="27">' + resultData.pay_order_id + '</td>' +
+                                '<td align="center" height="27">' + resultData.premium + '</td>' +
+                                '<td align="center" height="27">' + resultData.insured_amount + '</td>' +
+                                '<td align="center" height="27">' + resultData.max_insured_amount + '</td></tr>';
                         })
 
                         $("#que").html(a);

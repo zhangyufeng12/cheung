@@ -1,8 +1,8 @@
 package com.example.didi.tools;
 /*
-*@author  zhangyufeng
-*@data 2018/8/14 下午7:00
-*/
+ *@author  zhangyufeng
+ *@data 2018/8/14 下午7:00
+ */
 
 import com.alibaba.fastjson.JSONObject;
 import org.apache.http.*;
@@ -40,7 +40,7 @@ import java.net.UnknownHostException;
 import java.util.*;
 
 public class HttpClientUtil {
-    public static Logger logger = LoggerFactory.getLogger(HttpClientUtil.class);
+    public static Logger logger = LoggerFactory.getLogger( HttpClientUtil.class );
 
     static final int maxTotalPool = 200;//连接池最大连接数
 
@@ -56,30 +56,28 @@ public class HttpClientUtil {
 
     private final static Object syncLock = new Object();
 
-    private static void config(HttpRequestBase httpRequestBase){
+    private static void config( HttpRequestBase httpRequestBase ) {
         // 配置请求的超时设置
-        RequestConfig requestConfig = RequestConfig.custom()
-                .setConnectionRequestTimeout(timeOut)
-                .setConnectTimeout(timeOut).setSocketTimeout(timeOut).build();
-        httpRequestBase.setConfig(requestConfig);
+        RequestConfig requestConfig = RequestConfig.custom().setConnectionRequestTimeout( timeOut ).setConnectTimeout( timeOut ).setSocketTimeout( timeOut ).build();
+        httpRequestBase.setConfig( requestConfig );
     }
 
 
     /**
      * 获取HttpClient对象
      */
-    public static CloseableHttpClient getHttpClient(String url) {
-        String hostname = url.split("/")[2];
+    public static CloseableHttpClient getHttpClient( String url ) {
+        String hostname = url.split( "/" )[2];
         int port = 80;
-        if (hostname.contains(":")) {
-            String[] arr = hostname.split(":");
+        if (hostname.contains( ":" )) {
+            String[] arr = hostname.split( ":" );
             hostname = arr[0];
-            port = Integer.parseInt(arr[1]);
+            port = Integer.parseInt( arr[1] );
         }
         if (httpClient == null) {
             synchronized (syncLock) {
                 if (httpClient == null) {
-                    httpClient = createHttpClient(maxTotalPool, maxConPerRoute, maxRoute, hostname, port);
+                    httpClient = createHttpClient( maxTotalPool, maxConPerRoute, maxRoute, hostname, port );
                 }
             }
         }
@@ -89,29 +87,22 @@ public class HttpClientUtil {
     /**
      * 创建HttpClient对象
      */
-    public static CloseableHttpClient createHttpClient(int maxTotal,
-                                                       int maxPerRoute, int maxRoute, String hostname, int port) {
-        ConnectionSocketFactory plainsf = PlainConnectionSocketFactory
-                .getSocketFactory();
-        LayeredConnectionSocketFactory sslsf = SSLConnectionSocketFactory
-                .getSocketFactory();
-        Registry<ConnectionSocketFactory> registry = RegistryBuilder
-                .<ConnectionSocketFactory> create().register("http", plainsf)
-                .register("https", sslsf).build();
-        PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager(
-                registry);
+    public static CloseableHttpClient createHttpClient( int maxTotal, int maxPerRoute, int maxRoute, String hostname, int port ) {
+        ConnectionSocketFactory plainsf = PlainConnectionSocketFactory.getSocketFactory();
+        LayeredConnectionSocketFactory sslsf = SSLConnectionSocketFactory.getSocketFactory();
+        Registry<ConnectionSocketFactory> registry = RegistryBuilder.<ConnectionSocketFactory>create().register( "http", plainsf ).register( "https", sslsf ).build();
+        PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager( registry );
         // 将最大连接数增加
-        cm.setMaxTotal(maxTotal);
+        cm.setMaxTotal( maxTotal );
         // 将每个路由基础的连接增加
-        cm.setDefaultMaxPerRoute(maxPerRoute);
-        HttpHost httpHost = new HttpHost(hostname, port);
+        cm.setDefaultMaxPerRoute( maxPerRoute );
+        HttpHost httpHost = new HttpHost( hostname, port );
         // 将目标主机的最大连接数增加
-        cm.setMaxPerRoute(new HttpRoute(httpHost), maxRoute);
+        cm.setMaxPerRoute( new HttpRoute( httpHost ), maxRoute );
 
         // 请求重试处理
         HttpRequestRetryHandler httpRequestRetryHandler = new HttpRequestRetryHandler() {
-            public boolean retryRequest(IOException exception,
-                                        int executionCount, HttpContext context) {
+            public boolean retryRequest( IOException exception, int executionCount, HttpContext context ) {
                 if (executionCount >= 5) {// 如果已经重试了5次，就放弃
                     return false;
                 }
@@ -134,8 +125,7 @@ public class HttpClientUtil {
                     return false;
                 }
 
-                HttpClientContext clientContext = HttpClientContext
-                        .adapt(context);
+                HttpClientContext clientContext = HttpClientContext.adapt( context );
                 HttpRequest request = clientContext.getRequest();
                 // 如果请求是幂等的，就再次尝试
                 if (!(request instanceof HttpEntityEnclosingRequest)) {
@@ -145,22 +135,19 @@ public class HttpClientUtil {
             }
         };
 
-        CloseableHttpClient httpClient = HttpClients.custom()
-                .setConnectionManager(cm)
-                .setRetryHandler(httpRequestRetryHandler).build();
+        CloseableHttpClient httpClient = HttpClients.custom().setConnectionManager( cm ).setRetryHandler( httpRequestRetryHandler ).build();
 
         return httpClient;
     }
 
-    private static void setPostParams(HttpPost httpost,
-                                      Map<String, Object> params) {
+    private static void setPostParams( HttpPost httpost, Map<String, Object> params ) {
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
         Set<String> keySet = params.keySet();
         for (String key : keySet) {
-            nvps.add(new BasicNameValuePair(key, params.get(key).toString()));
+            nvps.add( new BasicNameValuePair( key, params.get( key ).toString() ) );
         }
         try {
-            httpost.setEntity(new UrlEncodedFormEntity(nvps, "UTF-8"));
+            httpost.setEntity( new UrlEncodedFormEntity( nvps, "UTF-8" ) );
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -169,27 +156,25 @@ public class HttpClientUtil {
     /**
      * POST请求URL获取内容
      */
-    public static String post(String url, Map params, Map header) {
-        HttpPost httppost = new HttpPost(url);
-        setHttpHeaderInfo(httppost,header);
-        config(httppost);
-        setPostParams(httppost, params);
+    public static String post( String url, Map params, Map header ) {
+        HttpPost httppost = new HttpPost( url );
+        setHttpHeaderInfo( httppost, header );
+        config( httppost );
+        setPostParams( httppost, params );
         CloseableHttpResponse response = null;
         try {
-            response = getHttpClient(url).execute(httppost,
-                    HttpClientContext.create());
+            response = getHttpClient( url ).execute( httppost, HttpClientContext.create() );
             if (response.getStatusLine().getStatusCode() == 200) {// 如果状态码为200,就是正常返回
                 HttpEntity entity = response.getEntity();
-                String result = EntityUtils.toString(entity, "utf-8");
-                EntityUtils.consume(entity);
+                String result = EntityUtils.toString( entity, "utf-8" );
+                EntityUtils.consume( entity );
                 return result;
             }
         } catch (Exception e) {
-            logger.error("post请求发生异常,url:" +url + ",参数：" + JSONObject.toJSONString(params), e);
+            logger.error( "post请求发生异常,url:" + url + ",参数：" + JSONObject.toJSONString( params ), e );
         } finally {
             try {
-                if (response != null)
-                    response.close();
+                if (response != null) response.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -200,32 +185,30 @@ public class HttpClientUtil {
     /**
      * GET请求URL获取内容
      */
-    public static String get(String host,String param,Map<String, String> header) {
+    public static String get( String host, String param, Map<String, String> header ) {
 //        try {
 //            param=URLEncoder.encode(param,"utf-8");
 //        } catch (UnsupportedEncodingException e) {
 //            e.printStackTrace();
 //        }
-        String url=host+"?"+param;
-        HttpGet httpget = new HttpGet(url);
-        setHttpHeaderInfo(httpget,header);
-        config(httpget);
+        String url = host + "?" + param;
+        HttpGet httpget = new HttpGet( url );
+        setHttpHeaderInfo( httpget, header );
+        config( httpget );
         CloseableHttpResponse response = null;
         try {
-            response = getHttpClient(url).execute(httpget,
-                    HttpClientContext.create());
+            response = getHttpClient( url ).execute( httpget, HttpClientContext.create() );
             if (response.getStatusLine().getStatusCode() == 200) {// 如果状态码为200,就是正常返回
                 HttpEntity entity = response.getEntity();
-                String result = EntityUtils.toString(entity, "utf-8");
-                EntityUtils.consume(entity);
+                String result = EntityUtils.toString( entity, "utf-8" );
+                EntityUtils.consume( entity );
                 return result;
             }
         } catch (IOException e) {
-            logger.error("get请求发生异常，请求url：" + url, e);
+            logger.error( "get请求发生异常，请求url：" + url, e );
         } finally {
             try {
-                if (response != null)
-                    response.close();
+                if (response != null) response.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -233,14 +216,14 @@ public class HttpClientUtil {
         return null;
     }
 
-    private static void setHttpHeaderInfo(HttpRequestBase httpMethod,Map<String, String> header){
-        if(header != null && header.size() > 0) {
+    private static void setHttpHeaderInfo( HttpRequestBase httpMethod, Map<String, String> header ) {
+        if (header != null && header.size() > 0) {
             Set<String> key = header.keySet();
             Iterator it = key.iterator();
 
-            while(it.hasNext()) {
-                String s = (String)it.next();
-                httpMethod.setHeader(s, (String)header.get(s));
+            while (it.hasNext()) {
+                String s = (String) it.next();
+                httpMethod.setHeader( s, (String) header.get( s ) );
             }
         }
     }

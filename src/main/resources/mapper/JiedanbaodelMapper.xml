@@ -4,74 +4,72 @@
 
 <mapper namespace="com.example.didi.domain.mapper.JiedanbaodelMapper">
 
-<!--select * from user u where id=#{id}-->
-<!--</select>-->
-<!--&lt;!&ndash; 查询所有的User &ndash;&gt;-->
-<!--<select id="findUserList" resultType="com.luken.model.User">-->
-<!--SELECT u.id, u.name, u.password, u.age FROM user_data u;-->
-<!--</select>-->
-<!--&lt;!&ndash; 添加 &ndash;&gt;-->
-<!--<insert id="addUser" parameterType="com.luken.model.User">-->
-<!--insert into user_data values(#{name},#{password},#{age})-->
-<!--</insert>-->
-<!-- 删除 -->
-<delete id="delorder" parameterType="com.example.didi.Controller.JiedanbaodelController">
+    <!--select * from user u where id=#{id}-->
+    <!--</select>-->
+    <!--&lt;!&ndash; 查询所有的User &ndash;&gt;-->
+    <!--<select id="findUserList" resultType="com.luken.model.User">-->
+    <!--SELECT u.id, u.name, u.password, u.age FROM user_data u;-->
+    <!--</select>-->
+    <!--&lt;!&ndash; 添加 &ndash;&gt;-->
+    <!--<insert id="addUser" parameterType="com.luken.model.User">-->
+    <!--insert into user_data values(#{name},#{password},#{age})-->
+    <!--</insert>-->
+    <!-- 删除 -->
+    <delete id="delorder" parameterType="com.example.didi.Controller.JiedanbaodelController">
     DELETE FROM littleboyonlinetest.opph_ordercenter_sub_order_${param2}
     WHERE user_mid=#{param1};
 </delete>
 
-<delete id="delpay" parameterType="com.example.didi.Controller.JiedanbaodelController">
+    <delete id="delpay" parameterType="com.example.didi.Controller.JiedanbaodelController">
     DELETE FROM littleboyonlinetest.opph_ordercenter_pay_order_${param2}
     WHERE user_mid=#{param1};
 </delete>
 
-<delete id="delpolicy" parameterType="com.example.didi.Controller.JiedanbaodelController">
+    <delete id="delpolicy" parameterType="com.example.didi.Controller.JiedanbaodelController">
     DELETE FROM littleboyonlinetest.opph_ordercenter_policy_${param2}
     WHERE user_mid=#{param1};
 </delete>
 
-<delete id="deldetail" parameterType="com.example.didi.Controller.JiedanbaodelController">
+    <delete id="deldetail" parameterType="com.example.didi.Controller.JiedanbaodelController">
     DELETE FROM littleboyonlinetest.opph_ordercenter_pay_detail_${param2}
      WHERE user_mid=#{param1};
 </delete>
 
-<delete id="delproduct" parameterType="com.example.didi.Controller.JiedanbaodelController">
+    <delete id="delproduct" parameterType="com.example.didi.Controller.JiedanbaodelController">
     DELETE FROM littleboyonlinetest.opph_ordercenter_product_order_${param2}
     WHERE user_mid=#{param1};
 </delete>
 
-<delete id="dellog" parameterType="com.example.didi.Controller.JiedanbaodelController">
+    <delete id="dellog" parameterType="com.example.didi.Controller.JiedanbaodelController">
     DELETE FROM man_opph_plan.opph_plan_log
     WHERE user_mid=#{param1};
 </delete>
 
-<delete id="delgroup" parameterType="com.example.didi.Controller.JiedanbaodelController">
+    <delete id="delgroup" parameterType="com.example.didi.Controller.JiedanbaodelController">
     DELETE FROM man_opph_plan.opph_plan_drivergroup
      WHERE user_mid=#{param1};
 </delete>
 
-<delete id="delplan" parameterType="com.example.didi.Controller.JiedanbaodelController">
+    <delete id="delplan" parameterType="com.example.didi.Controller.JiedanbaodelController">
     DELETE FROM man_opph_plan.opph_plan_driverplan
     WHERE user_mid=#{param1};
 </delete>
 
-<delete id="delamount" parameterType="com.example.didi.Controller.JiedanbaodelController">
+    <delete id="delamount" parameterType="com.example.didi.Controller.JiedanbaodelController">
     DELETE FROM man_opph_plan.opph_plan_init_amount
     WHERE mid=#{param1};
 </delete>
 
 
-<!--查询-->
-<select id="QueryPolicy" parameterType="com.example.didi.Controller.JiedanbaodelController" resultType="HashMap">
+    <!--查询-->
+    <select id="QueryPolicy" parameterType="com.example.didi.Controller.JiedanbaodelController" resultType="HashMap">
     select insurant_name,product_name,user_mobile,user_didi_id,status,pay_order_id,inscompany_name,max_insured_amount,insured_amount,premium,user_mid from
     littleboyonlinetest.opph_ordercenter_policy_${param2} where user_mid=#{param1};
 </select>
 
 
-
-
     <!--&lt;!&ndash; 更新 &ndash;&gt;-->
-<!--<update id="updateUser">-->
-<!--UPDATE user_data SET name=#{name},password=#{password},age=#{age} WHERE id=#{id}-->
-<!--</update>-->
+    <!--<update id="updateUser">-->
+    <!--UPDATE user_data SET name=#{name},password=#{password},age=#{age} WHERE id=#{id}-->
+    <!--</update>-->
 </mapper>

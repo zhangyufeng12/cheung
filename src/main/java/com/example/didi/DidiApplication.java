@@ -7,7 +7,7 @@ import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication
 /*
-	扫描mapper
+    扫描mapper
 */
 @MapperScan(basePackages = "com.example.didi.domain.mapper")
 
@@ -17,7 +17,7 @@ import org.springframework.cache.annotation.EnableCaching;
 @EnableCaching
 public class DidiApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(DidiApplication.class, args);
-	}
+    public static void main( String[] args ) {
+        SpringApplication.run( DidiApplication.class, args );
+    }
 }

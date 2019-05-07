@@ -7,7 +7,7 @@ package com.example.didi.dto;
 import java.io.Serializable;
 import java.util.Date;
 
-public class ApprovalDto implements Serializable{
+public class ApprovalDto implements Serializable {
 
     private Long id;
 
@@ -53,7 +53,7 @@ public class ApprovalDto implements Serializable{
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId( Long id ) {
         this.id = id;
     }
 
@@ -61,7 +61,7 @@ public class ApprovalDto implements Serializable{
         return approvalType;
     }
 
-    public void setApprovalType(Integer approvalType) {
+    public void setApprovalType( Integer approvalType ) {
         this.approvalType = approvalType;
     }
 
@@ -69,7 +69,7 @@ public class ApprovalDto implements Serializable{
         return approvalStatus;
     }
 
-    public void setApprovalStatus(Integer approvalStatus) {
+    public void setApprovalStatus( Integer approvalStatus ) {
         this.approvalStatus = approvalStatus;
     }
 
@@ -77,7 +77,7 @@ public class ApprovalDto implements Serializable{
         return customId;
     }
 
-    public void setCustomId(Long customId) {
+    public void setCustomId( Long customId ) {
         this.customId = customId;
     }
 
@@ -85,7 +85,7 @@ public class ApprovalDto implements Serializable{
         return productId;
     }
 
-    public void setProductId(Long productId) {
+    public void setProductId( Long productId ) {
         this.productId = productId;
     }
 
@@ -93,7 +93,7 @@ public class ApprovalDto implements Serializable{
         return reviewerId;
     }
 
-    public void setReviewerId(Long reviewerId) {
+    public void setReviewerId( Long reviewerId ) {
         this.reviewerId = reviewerId;
     }
 
@@ -101,7 +101,7 @@ public class ApprovalDto implements Serializable{
         return reviewerName;
     }
 
-    public void setReviewerName(String reviewerName) {
+    public void setReviewerName( String reviewerName ) {
         this.reviewerName = reviewerName == null ? null : reviewerName.trim();
     }
 
@@ -109,7 +109,7 @@ public class ApprovalDto implements Serializable{
         return reason;
     }
 
-    public void setReason(String reason) {
+    public void setReason( String reason ) {
         this.reason = reason == null ? null : reason.trim();
     }
 
@@ -117,7 +117,7 @@ public class ApprovalDto implements Serializable{
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    public void setCreateDate( Date createDate ) {
         this.createDate = createDate;
     }
 
@@ -125,7 +125,7 @@ public class ApprovalDto implements Serializable{
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime( Date updateTime ) {
         this.updateTime = updateTime;
     }
 
@@ -133,7 +133,7 @@ public class ApprovalDto implements Serializable{
         return orgId;
     }
 
-    public void setOrgId(Long orgId) {
+    public void setOrgId( Long orgId ) {
         this.orgId = orgId;
     }
 
@@ -141,7 +141,7 @@ public class ApprovalDto implements Serializable{
         return referType;
     }
 
-    public void setReferType(Integer referType) {
+    public void setReferType( Integer referType ) {
         this.referType = referType;
     }
 
@@ -149,7 +149,7 @@ public class ApprovalDto implements Serializable{
         return preApprovalStatus;
     }
 
-    public void setPreApprovalStatus(Integer preApprovalStatus) {
+    public void setPreApprovalStatus( Integer preApprovalStatus ) {
         this.preApprovalStatus = preApprovalStatus;
     }
 
@@ -157,7 +157,7 @@ public class ApprovalDto implements Serializable{
         return easyReason;
     }
 
-    public void setEasyReason(String easyReason) {
+    public void setEasyReason( String easyReason ) {
         this.easyReason = easyReason == null ? null : easyReason.trim();
     }
 
@@ -165,7 +165,7 @@ public class ApprovalDto implements Serializable{
         return identifyMsg;
     }
 
-    public void setIdentifyMsg(String identifyMsg) {
+    public void setIdentifyMsg( String identifyMsg ) {
         this.identifyMsg = identifyMsg == null ? null : identifyMsg.trim();
     }
 
@@ -173,7 +173,7 @@ public class ApprovalDto implements Serializable{
         return resign;
     }
 
-    public void setResign(Integer resign) {
+    public void setResign( Integer resign ) {
         this.resign = resign;
     }
 
@@ -181,7 +181,7 @@ public class ApprovalDto implements Serializable{
         return reviewType;
     }
 
-    public void setReviewType(Integer reviewType) {
+    public void setReviewType( Integer reviewType ) {
         this.reviewType = reviewType;
     }
 
@@ -189,7 +189,7 @@ public class ApprovalDto implements Serializable{
         return customCertificateId;
     }
 
-    public void setCustomCertificateId(Long customCertificateId) {
+    public void setCustomCertificateId( Long customCertificateId ) {
         this.customCertificateId = customCertificateId;
     }
 
@@ -197,7 +197,7 @@ public class ApprovalDto implements Serializable{
         return reasonType;
     }
 
-    public void setReasonType(String reasonType) {
+    public void setReasonType( String reasonType ) {
         this.reasonType = reasonType == null ? null : reasonType.trim();
     }
 
@@ -205,7 +205,7 @@ public class ApprovalDto implements Serializable{
         return errorType;
     }
 
-    public void setErrorType(Integer errorType) {
+    public void setErrorType( Integer errorType ) {
         this.errorType = errorType;
     }
 }

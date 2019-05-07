@@ -15,10 +15,11 @@ public enum TradeEnum {
     private int code;
     private String msg;
 
-    TradeEnum( int code, String msg) {
+    TradeEnum( int code, String msg ) {
         this.code = code;
         this.msg = msg;
     }
+
     public int getCode() {
         return code;
     }
@@ -27,11 +28,11 @@ public enum TradeEnum {
         return msg;
     }
 
-    public static int getTradeEnum(int code){
+    public static int getTradeEnum( int code ) {
 
         for (TradeEnum tradeEnum : TradeEnum.values()) {
 
-            if(tradeEnum.code == code){
+            if (tradeEnum.code == code) {
                 return tradeEnum.code;
             }
         }

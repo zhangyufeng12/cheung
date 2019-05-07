@@ -1,10 +1,10 @@
-package com.example.didi.Service;
+package com.example.didi.Service.ServiceImpl;
 /*
 *@author  zhangyufeng
 *@data 2018/8/10 下午4:33
 */
 
-import com.example.didi.Service.ServiceImpl.ApprovalService;
+import com.example.didi.Service.ApprovalService;
 import com.example.didi.domain.entity.ApprovalEntity;
 import com.example.didi.domain.mapper.Approval58Mapper;
 import com.example.didi.dto.ApprovalDto;
@@ -17,10 +17,10 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Service("ApprovalService")
-public class ApprovalServiceImpl implements ApprovalService{
+public class ApprovalServiceImpl implements ApprovalService {
 
 
-    private Logger log= Logger.getLogger(ApprovalServiceImpl.class);
+    private Logger log = Logger.getLogger( ApprovalServiceImpl.class );
     @Resource
     private Approval58Mapper approval58Mapper;
 
@@ -28,10 +28,10 @@ public class ApprovalServiceImpl implements ApprovalService{
     //查询
     @Override
     public List<ApprovalEntity> SearchApproval( String phone ) {
-        if (phone==""||phone==null){
+        if (phone == "" || phone == null) {
             return null;
         }
-        return approval58Mapper.SearchApproval(phone);
+        return approval58Mapper.SearchApproval( phone );
     }
 
 
@@ -48,16 +48,15 @@ public class ApprovalServiceImpl implements ApprovalService{
         }
 
         //合法状态范围 1-3
-        if (ApprovalEnum.getApprovalStatusEnum(approval_status) == 0 ||
-                ApprovalEnum.getApprovalStatusEnum(approval_status)>=4) {
-            tcRespDto.setErrorMessage("Status错误:code不存在 ：" + approval_status);
+        if (ApprovalEnum.getApprovalStatusEnum( approval_status ) == 0 || ApprovalEnum.getApprovalStatusEnum( approval_status ) >= 4) {
+            tcRespDto.setErrorMessage( "Status错误:code不存在 ：" + approval_status );
             return ApprovalEnum.EXCE.getMsg();
         }
 
-        Long custom = SearchApproval(phone).get(0).getCustomId();
+        Long custom = SearchApproval( phone ).get( 0 ).getCustomId();
 
         //获取custom不能为空
-        if (custom==null){
+        if (custom == null) {
             return ApprovalEnum.NULL.getMsg();
         }
 

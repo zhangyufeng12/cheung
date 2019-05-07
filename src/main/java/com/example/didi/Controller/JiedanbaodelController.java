@@ -2,7 +2,7 @@ package com.example.didi.Controller;
 
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
-import com.example.didi.Service.ServiceImpl.JiedanbaodelService;
+import com.example.didi.Service.JiedanbaodelService;
 import com.example.didi.domain.entity.PolicyEntity;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -25,34 +25,34 @@ import java.util.List;
 @RequestMapping("/")
 public class JiedanbaodelController {
 
-    private Logger log =Logger.getLogger(JiedanbaodelController.class);
+    private Logger log = Logger.getLogger( JiedanbaodelController.class );
     @Resource
     private JiedanbaodelService jiedanbaodelService;
 
     @RequestMapping("/jiedanbao/del")
     @ResponseBody
-    public JSONObject testReq(HttpServletRequest request) throws JSONException {
+    public JSONObject testReq( HttpServletRequest request ) throws JSONException {
         //获取mid
-        String mid = request.getParameter("mid");
+        String mid = request.getParameter( "mid" );
 //            String aaa = Integer.toString(userService.delorder(phone));
         //打印
         JSONObject result1 = new JSONObject();
         JSONObject result = new JSONObject();
-        if (mid==""){
-            result.put("result","mid不能为空");
-            log.error("mid不能为空");
+        if (mid == "") {
+            result.put( "result", "mid不能为空" );
+            log.error( "mid不能为空" );
         } else {
-            result1.put("subOrder", jiedanbaodelService.delorder(mid));
-            result1.put("PayOrder", jiedanbaodelService.delpay(mid));
-            result1.put("Policy", jiedanbaodelService.delpolicy(mid));
-            result1.put("Detail", jiedanbaodelService.deldetail(mid));
-            result1.put("PlanLog", jiedanbaodelService.dellog(mid));
-            result1.put("DriverGroup", jiedanbaodelService.delgroup(mid));
-            result1.put("DriverPlan", jiedanbaodelService.delplan(mid));
-            result1.put("InitAmount", jiedanbaodelService.delamount(mid));
-            result1.put("Product",jiedanbaodelService.delproduct(mid));
+            result1.put( "subOrder", jiedanbaodelService.delorder( mid ) );
+            result1.put( "PayOrder", jiedanbaodelService.delpay( mid ) );
+            result1.put( "Policy", jiedanbaodelService.delpolicy( mid ) );
+            result1.put( "Detail", jiedanbaodelService.deldetail( mid ) );
+            result1.put( "PlanLog", jiedanbaodelService.dellog( mid ) );
+            result1.put( "DriverGroup", jiedanbaodelService.delgroup( mid ) );
+            result1.put( "DriverPlan", jiedanbaodelService.delplan( mid ) );
+            result1.put( "InitAmount", jiedanbaodelService.delamount( mid ) );
+            result1.put( "Product", jiedanbaodelService.delproduct( mid ) );
 
-            result.put("result", result1.toJSONString());
+            result.put( "result", result1.toJSONString() );
         }
 //            model.addAttribute("mid", user);
 //            System.out.println(user);
@@ -76,12 +76,12 @@ public class JiedanbaodelController {
 //    }
 
 
-    public List<PolicyEntity> QueryPolicy(HttpServletRequest request) throws Exception{
-        String mid = request.getParameter("mid");
-        List<PolicyEntity> result =jiedanbaodelService.QueryPolicy(mid);
+    public List<PolicyEntity> QueryPolicy( HttpServletRequest request ) throws Exception {
+        String mid = request.getParameter( "mid" );
+        List<PolicyEntity> result = jiedanbaodelService.QueryPolicy( Long.valueOf( mid ) );
 
-        log.info("入参为:"+"mid="+mid);
-        log.info("参数返回："+result);
+        log.info( "入参为:" + "mid=" + mid );
+        log.info( "参数返回：" + result );
         return result;
     }
 }

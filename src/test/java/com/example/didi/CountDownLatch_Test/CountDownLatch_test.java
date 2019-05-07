@@ -1,6 +1,6 @@
-package com.example.didi;
+package com.example.didi.CountDownLatch_Test;
 
-import com.example.didi.tools.HttpUtil;
+import com.example.didi.tools.http.HttpUtil;
 
 import java.util.concurrent.CountDownLatch;
 

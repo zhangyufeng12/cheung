@@ -4,24 +4,24 @@ package com.example.didi.domain.entity;
 * 2017.10
 * */
 
-public class PolicyEntity{
-    String insurant_name;      //被保人
-    String product_name;       //产品名称
-    String user_mobile;        //手机号
-    String user_didi_id;        //滴滴id
-    int status;                //保单状态
-    String pay_order_id;       //支付订单id
-    String inscompany_name;    //保险公司名称
-    int max_insured_amount;    //最大保额
-    int insured_amount;        //保额
-    int premium;               //保费
-    String user_mid;
+public class PolicyEntity {
+    private String insurant_name;      //被保人
+    private String product_name;       //产品名称
+    private String user_mobile;        //手机号
+    private String user_didi_id;        //滴滴id
+    private int status;                //保单状态
+    private String pay_order_id;       //支付订单id
+    private String inscompany_name;    //保险公司名称
+    private int max_insured_amount;    //最大保额
+    private int insured_amount;        //保额
+    private int premium;               //保费
+    private String user_mid;
 
     public String getInsurant_name() {
         return insurant_name;
     }
 
-    public void setInsurant_name(String insurant_name) {
+    public void setInsurant_name( String insurant_name ) {
         this.insurant_name = insurant_name;
     }
 
@@ -29,7 +29,7 @@ public class PolicyEntity{
         return product_name;
     }
 
-    public void setProduct_name(String product_name) {
+    public void setProduct_name( String product_name ) {
         this.product_name = product_name;
     }
 
@@ -37,7 +37,7 @@ public class PolicyEntity{
         return user_mobile;
     }
 
-    public void setUser_mobile(String user_mobile) {
+    public void setUser_mobile( String user_mobile ) {
         this.user_mobile = user_mobile;
     }
 
@@ -45,7 +45,7 @@ public class PolicyEntity{
         return user_didi_id;
     }
 
-    public void setUser_didi_id(String user_didi_id) {
+    public void setUser_didi_id( String user_didi_id ) {
         this.user_didi_id = user_didi_id;
     }
 
@@ -53,7 +53,7 @@ public class PolicyEntity{
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus( int status ) {
         this.status = status;
     }
 
@@ -61,7 +61,7 @@ public class PolicyEntity{
         return pay_order_id;
     }
 
-    public void setPay_order_id(String pay_order_id) {
+    public void setPay_order_id( String pay_order_id ) {
         this.pay_order_id = pay_order_id;
     }
 
@@ -69,7 +69,7 @@ public class PolicyEntity{
         return inscompany_name;
     }
 
-    public void setInscompany_name(String inscompany_name) {
+    public void setInscompany_name( String inscompany_name ) {
         this.inscompany_name = inscompany_name;
     }
 
@@ -77,7 +77,7 @@ public class PolicyEntity{
         return max_insured_amount;
     }
 
-    public void setMax_insured_amount(int max_insured_amount) {
+    public void setMax_insured_amount( int max_insured_amount ) {
         this.max_insured_amount = max_insured_amount;
     }
 
@@ -85,7 +85,7 @@ public class PolicyEntity{
         return insured_amount;
     }
 
-    public void setInsured_amount(int insured_amount) {
+    public void setInsured_amount( int insured_amount ) {
         this.insured_amount = insured_amount;
     }
 
@@ -93,7 +93,7 @@ public class PolicyEntity{
         return premium;
     }
 
-    public void setPremium(int premium) {
+    public void setPremium( int premium ) {
         this.premium = premium;
     }
 
@@ -101,7 +101,7 @@ public class PolicyEntity{
         return user_mid;
     }
 
-    public void setUser_mid(String user_mid) {
+    public void setUser_mid( String user_mid ) {
         this.user_mid = user_mid;
     }
 }

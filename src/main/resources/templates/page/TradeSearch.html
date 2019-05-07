@@ -57,7 +57,7 @@
                     </tr>
                     </thead>
 
-                    <tbody  id="que">
+                    <tbody id="que">
 
                     </tbody>
 
@@ -77,29 +77,29 @@
     function Tradesearch() {
         var orderid = $("#orderid").val();
 
-        if(orderid==""){
+        if (orderid == "") {
             alert("orderid不能为空！")
-        }else {
+        } else {
             $.ajax({
                 type: "GET",
-                url: "/trade/Search?orderid="+orderid,
+                url: "/trade/Search?orderid=" + orderid,
 
                 success: function (data) {
-                    if(data == ""){
-                        $("#que"). html("查询结果为空");
+                    if (data == "") {
+                        $("#que").html("查询结果为空");
 //                        alert("查询结果为空");
-                    }else {
+                    } else {
 
-                        var a=null;
-                        $.each(eval(data),function (index,resultData) {
-                            a+='<tr><td align="center" height="27">'+index +'</td>' +
-                                '<td align="center" height="27">'+resultData.orderId+'</td>'+
-                                '<td align="center" height="27">'+resultData.userId+'</td>'+
-                                '<td align="center" height="27">'+resultData.serviceId+'</td>'+
-                                '<td align="center" height="27">'+resultData.cityId+'</td>'+
-                                '<td align="center" height="27">'+resultData.businessId+'</td>'+
-                                '<td align="center" height="27">'+resultData.orderPrice+'</td>'+
-                                '<td align="center" height="27">'+resultData.needPrice+'</td></tr>';
+                        var a = null;
+                        $.each(eval(data), function (index, resultData) {
+                            a += '<tr><td align="center" height="27">' + index + '</td>' +
+                                '<td align="center" height="27">' + resultData.orderId + '</td>' +
+                                '<td align="center" height="27">' + resultData.userId + '</td>' +
+                                '<td align="center" height="27">' + resultData.serviceId + '</td>' +
+                                '<td align="center" height="27">' + resultData.cityId + '</td>' +
+                                '<td align="center" height="27">' + resultData.businessId + '</td>' +
+                                '<td align="center" height="27">' + resultData.orderPrice + '</td>' +
+                                '<td align="center" height="27">' + resultData.needPrice + '</td></tr>';
                         })
 
                         $("#que").html(a);

@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface Approval58Mapper {
 
-    List<ApprovalEntity> SearchApproval(@Param( "phone" ) String phone );
+    List<ApprovalEntity> SearchApproval( @Param("phone") String phone );
 
-    int Approval_status(@Param("custom") Long custom , int approval_status);
+    int Approval_status( @Param("custom") Long custom, @Param("approval_status") int approval_status );
 }

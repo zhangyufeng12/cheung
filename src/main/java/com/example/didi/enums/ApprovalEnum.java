@@ -17,10 +17,11 @@ public enum  ApprovalEnum {
     private int code;
     private String msg;
 
-    ApprovalEnum(int code, String msg) {
+    ApprovalEnum( int code, String msg ) {
         this.code = code;
         this.msg = msg;
     }
+
     public int getCode() {
         return code;
     }
@@ -29,11 +30,11 @@ public enum  ApprovalEnum {
         return msg;
     }
 
-    public static int getApprovalStatusEnum(int code){
+    public static int getApprovalStatusEnum( int code ) {
 
         for (ApprovalEnum approvalStatus : ApprovalEnum.values()) {
 
-            if(approvalStatus.code == code){
+            if (approvalStatus.code == code) {
                 return approvalStatus.code;
             }
         }

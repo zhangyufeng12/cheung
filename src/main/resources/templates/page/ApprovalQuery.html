@@ -57,7 +57,7 @@
                     </tr>
                     </thead>
 
-                    <tbody  id="que">
+                    <tbody id="que">
                     <!--<tr>-->
                     <!--<td align="center" height="27">100100045690</td>-->
                     <!--<td align="center" height="27">566384711241728</td>-->
@@ -91,28 +91,28 @@
     function Approvalsearch() {
         var phone = $("#phone").val();
 
-        if(phone==""){
+        if (phone == "") {
             alert("手机号不能为空！")
-        }else {
+        } else {
             $.ajax({
                 type: "GET",
-                url: "/approval/org/search?phone="+phone,
+                url: "/approval/org/search?phone=" + phone,
 
                 success: function (data) {
-                    if(data == ""){
-                        $("#que"). html("查询结果为空");
+                    if (data == "") {
+                        $("#que").html("查询结果为空");
 //                        alert("查询结果为空");
-                    }else {
+                    } else {
 
-                        var a=null;
-                        $.each(eval(data),function (index,resultData) {
-                            a+='<tr><td align="center" height="27">'+index +'</td>' +
-                                '<td align="center" height="27">'+resultData.customId+'</td>'+
-                                '<td align="center" height="27">'+resultData.orgId+'</td>'+
-                                '<td align="center" height="27">'+resultData.approvalStatus+'</td>'+
-                                '<td align="center" height="27">'+resultData.approvalType+'</td>'+
-                                '<td align="center" height="27">'+resultData.intoApprovalReason+'</td>'+
-                                '<td align="center" height="27">'+resultData.faceCertifyStatus+'</td>' +
+                        var a = null;
+                        $.each(eval(data), function (index, resultData) {
+                            a += '<tr><td align="center" height="27">' + index + '</td>' +
+                                '<td align="center" height="27">' + resultData.customId + '</td>' +
+                                '<td align="center" height="27">' + resultData.orgId + '</td>' +
+                                '<td align="center" height="27">' + resultData.approvalStatus + '</td>' +
+                                '<td align="center" height="27">' + resultData.approvalType + '</td>' +
+                                '<td align="center" height="27">' + resultData.intoApprovalReason + '</td>' +
+                                '<td align="center" height="27">' + resultData.faceCertifyStatus + '</td>' +
                                 '<td><a class="layui-btn layui-btn-mini news_edit"><i onclick="Approvalupdate()"></i> 修改</a></td></tr>';
                         })
 

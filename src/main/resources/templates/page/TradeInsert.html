@@ -43,14 +43,15 @@
 
                 <label class="layui-form-label">OrderID:</label>
                 <div class="layui-input-inline">
-                    <input type="tel" id="orderid"  placeholder="请输入OrderID" class="layui-input" />
+                    <input type="tel" id="orderid" placeholder="请输入OrderID" class="layui-input"/>
                 </div>
                 <label class="layui-form-label">用戶ID:</label>
                 <div class="layui-input-inline">
-                    <input type="tel" id="userid"  placeholder="请输入用戶ID" class="layui-input" />
+                    <input type="tel" id="userid" placeholder="请输入用戶ID" class="layui-input"/>
                 </div>
 
-                <button class="layui-btn layui-btn-small layui-btn-primary" onclick="TradeIns()"><i class="layui-icon">&#xe640;新增</i></button>
+                <button class="layui-btn layui-btn-small layui-btn-primary" onclick="TradeIns()"><i class="layui-icon">&#xe640;新增</i>
+                </button>
 
             </div>
 
@@ -58,11 +59,11 @@
             <br></br>
             <br></br>
 
-<!--            <blockquote class="layui-elem-quote news_search">-->
-<!--                <div class="layui-btn-group">-->
-<!--                    <a>说明：<i>审核状态说明：审核中(1),审核通过(2),审核失败(3)</i></a>-->
-<!--                </div>-->
-<!--            </blockquote>-->
+            <!--            <blockquote class="layui-elem-quote news_search">-->
+            <!--                <div class="layui-btn-group">-->
+            <!--                    <a>说明：<i>审核状态说明：审核中(1),审核通过(2),审核失败(3)</i></a>-->
+            <!--                </div>-->
+            <!--            </blockquote>-->
 
             <br></br>
 
@@ -102,15 +103,15 @@
     function TradeIns() {
         var orderid = $("#orderid").val();
         var userid = $("#userid").val();
-        if(orderid=="" || userid==""){
+        if (orderid == "" || userid == "") {
             alert("输入不能为空！")
-        }else {
+        } else {
             $.ajax({
                 type: "GET",
                 url: "/trade/Ins",
-                data:{orderid:orderid,userid:userid},
+                data: {orderid: orderid, userid: userid},
                 success: function (data) {
-                    $("#result2"). html("result:" + data.result);
+                    $("#result2").html("result:" + data.result);
                 },
                 error: function (xhr) {
                     alert(xhr.status + ':' + xhr.statusText);

@@ -1,4 +1,4 @@
-package com.example.didi;
+package com.example.didi.Testng_Test;
 /*
 *@author  zhangyufeng
 *@data 2018/7/5 下午2:24
@@ -7,33 +7,38 @@ package com.example.didi;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.example.didi.tools.Head;
-import com.example.didi.tools.HttpUtil;
+import com.example.didi.tools.http.Head;
+import com.example.didi.tools.http.HttpClientUtil;
+import com.example.didi.tools.http.HttpUtil;
 import org.apache.log4j.Logger;
-import org.junit.Test;
+import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 
 import java.util.HashMap;
 
 
-public class Junit_test {
+public class Testng_test {
 
     private HttpUtil ConnectLink = new HttpUtil();
     private Head head = new Head();
-    private Logger log =  Logger.getLogger(Junit_test.class);
+    HttpClientUtil httpClientUtil = new HttpClientUtil();
+    private Logger log = Logger.getLogger(Testng_test.class);
 
     //Junit
     @Test
     public void coupon_productserver() {
-        String result = ConnectLink.doPost("https://discovery-dop80b.djtest.cn" +
-                    "/coupon/queryProductList", new HashMap<String, String>() {
-            {
-                put("customId", "");
-                put("serviceId", "");
-            }
-        }
-    );
+        head.getHead().put("token", "");
+
+        String result = httpClientUtil.post("https://discovery-dop80b.djtest.cn" +
+                        "/coupon/queryProductList", new HashMap<String, String>() {
+                    {
+                        put("customId", "");
+                        put("serviceId", "");
+                    }
+                }, head.getHead()
+        );
+
 
         System.out.println("------------+++++++++------------");
         System.out.println(result);
@@ -49,7 +54,7 @@ public class Junit_test {
 }
 
     //testng
-    @org.testng.annotations.Test(dataProvider = "test")
+    @Test(dataProvider = "test")
     public void test_junit(String mid){
         String result = ConnectLink.doGet("http://localhost:8018/jiedanbao/query?mid="+mid);
 
@@ -79,6 +84,21 @@ public class Junit_test {
             log.info("over!");
 
     }
+
+    @Test
+    public void ins() {
+
+
+        String res = httpClientUtil.get("http://localhost:8018/trade/Ins",
+                "orderid=1555485534642&userid=1213", head.getHead());
+
+        System.out.println(res);
+
+        JSONObject json = JSON.parseObject(res);
+        String r = json.getString("result");
+        Assert.assertEquals(r, "订单id已存在");
+    }
+
 
     @DataProvider
     public  Object[][] test() {

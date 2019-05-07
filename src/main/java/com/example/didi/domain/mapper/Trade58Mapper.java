@@ -8,8 +8,8 @@ import java.util.List;
 
 @Repository
 public interface Trade58Mapper {
-    //查詢交易
-    public  List<TradeEntity> SearchTrade( String order_id );
+    //查询交易
+    public List<TradeEntity> SearchTrade( Long order_id );
 
     //新增交易
     public int AddTrade( @Param("orderid") Long orderid, @Param("userid") Long userid );
