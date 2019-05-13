@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.didi.domain.mapper.RedisMapper">
+
+    <!--查询ip:port-->
+    <select id="SearchRedisAddress" resultType="com.example.didi.domain.entity.RedisEntity">
+        select * from address WHERE ip=#{ip} and port=#{port};
+    </select>
+
+    <!--添加ip:port-->
+    <insert id="AddRedisAddress">
+       INSERT INTO `address` (`ip`,`port`)VALUES (#{ip}, #{port});
+    </insert>
+
+    <!-- 删除ip:port -->
+    <delete id="delRedisAddress">
+    DELETE FROM address WHERE ip=#{ip} and port=#{port};
+</delete>
+</mapper>

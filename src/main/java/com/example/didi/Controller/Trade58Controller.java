@@ -30,7 +30,7 @@ public class Trade58Controller {
     @ResponseBody
     public List<TradeEntity> searchtrade( Long orderid ) throws Exception {
 //        String orderid = request.getParameter("orderid");
-        log.info( "入参为：", orderid );
+        log.info( "入参为={}", orderid );
         return tradeService.SearchTrade( orderid );
     }
 

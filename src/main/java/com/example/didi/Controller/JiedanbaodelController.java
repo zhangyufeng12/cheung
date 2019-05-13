@@ -61,6 +61,16 @@ public class JiedanbaodelController {
 
     @RequestMapping("/jiedanbao/query")
     @ResponseBody
+
+    public List<PolicyEntity> QueryPolicy( HttpServletRequest request ) throws Exception {
+        String mid = request.getParameter( "mid" );
+        List<PolicyEntity> result = jiedanbaodelService.QueryPolicy( Long.valueOf( mid ) );
+
+        log.info( "入参为: mid=" + mid );
+        log.info( "参数返回：" + result );
+        return result;
+    }
+
     /*
         JSONObject方法编写
         2018.1.10
@@ -76,12 +86,4 @@ public class JiedanbaodelController {
 //    }
 
 
-    public List<PolicyEntity> QueryPolicy( HttpServletRequest request ) throws Exception {
-        String mid = request.getParameter( "mid" );
-        List<PolicyEntity> result = jiedanbaodelService.QueryPolicy( Long.valueOf( mid ) );
-
-        log.info( "入参为:" + "mid=" + mid );
-        log.info( "参数返回：" + result );
-        return result;
-    }
 }

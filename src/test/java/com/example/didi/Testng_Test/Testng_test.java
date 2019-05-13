@@ -7,6 +7,7 @@ package com.example.didi.Testng_Test;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.example.didi.tools.Redis.InitProperties;
 import com.example.didi.tools.http.Head;
 import com.example.didi.tools.http.HttpClientUtil;
 import com.example.didi.tools.http.HttpUtil;
@@ -24,6 +25,9 @@ public class Testng_test {
     private Head head = new Head();
     HttpClientUtil httpClientUtil = new HttpClientUtil();
     private Logger log = Logger.getLogger(Testng_test.class);
+    static {
+        new InitProperties();
+    }
 
     //Junit
     @Test
@@ -87,16 +91,18 @@ public class Testng_test {
 
     @Test
     public void ins() {
+        String ip=System.getProperty(String.format("Http.%s.ip","beta"));
+        String prot=System.getProperty(String.format("Http.%s.port","beta"));
+        String url ="http://"+ip+":"+prot;
 
-
-        String res = httpClientUtil.get("http://localhost:8018/trade/Ins",
+        String res = httpClientUtil.get(url+"/trade/Ins",
                 "orderid=1555485534642&userid=1213", head.getHead());
 
         System.out.println(res);
 
         JSONObject json = JSON.parseObject(res);
         String r = json.getString("result");
-        Assert.assertEquals(r, "订单id已存在");
+        Assert.assertEquals(r, "对应参数已存在");
     }
 
 

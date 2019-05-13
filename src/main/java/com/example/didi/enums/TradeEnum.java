@@ -9,7 +9,7 @@ public enum TradeEnum {
     NULL(0, "参数不能为空"),
     SUCCESS(1,"添加成功"),
     ERROR(2,"参数错误"),
-    EXIST(3,"订单id已存在"),
+    EXIST(3, "对应参数已存在"),
     FAIL(4,"添加失败");
 
     private int code;

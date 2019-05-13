@@ -12,10 +12,13 @@ public class RedisUtil {
     private static final Log logger = LogFactory.getLog( RedisUtil.class );
 
 
+    static {
+        new InitProperties();
+    }
     //服务器IP地址
-    private static String ADDR = RedisConfig.redis_ip1;
+    private static String ADDR = System.getProperty(String.format("Redis.%s", "ip1"));
     //端口
-    private static int PORT = Integer.valueOf( RedisConfig.redis_port1 );
+    private static int PORT = Integer.parseInt(System.getProperty(String.format("Redis.%s", "port1")));
     //密码
     private static String AUTH = "123456";
     //连接实例的最大连接数
