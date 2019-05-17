@@ -112,7 +112,7 @@ public class ValidateUtils {
     private static final String V_31DAYS="^((0?[1-9])|((1|2)[0-9])|30|31)$";
 
 
-    private ValidateUtils(){}
+    public ValidateUtils(){}
 
 
     /**
@@ -440,4 +440,22 @@ public class ValidateUtils {
         return matcher.matches();
     }
 
+
+    /**
+     *  用正则表达式进行判断是否为ip
+     *  @param str   要匹配的字符串
+     * */
+    public boolean isIPAddressByRegex(String str) {
+        String regex = "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}";
+        // 判断ip地址是否与正则表达式匹配
+        if (str.matches(regex)) {
+            String[] arr = str.split("\\.");
+            for (int i = 0; i < 4; i++) {
+                int temp = Integer.parseInt(arr[i]);
+                //如果某个数字不是0到255之间的数 就返回false
+                if (temp < 0 || temp > 255) return false;
+            }
+            return true;
+        } else return false;
+    }
 }

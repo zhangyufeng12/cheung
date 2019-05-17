@@ -39,5 +39,5 @@ public interface RedisService {
      * redis删除地址
      * @param ip,port
      */
-    public int delRedisAddress(String ip,int port);
+    public String delRedisAddress(String ip,int port);
 }

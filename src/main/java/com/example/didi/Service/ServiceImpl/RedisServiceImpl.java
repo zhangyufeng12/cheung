@@ -5,6 +5,7 @@ import com.example.didi.domain.entity.RedisEntity;
 import com.example.didi.domain.mapper.RedisMapper;
 import com.example.didi.enums.RedisEnum;
 import com.example.didi.tools.Redis.JedisWrapper;
+import com.example.didi.tools.ValidateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ import java.util.List;
 public class RedisServiceImpl implements RedisService {
     @Resource
     private RedisMapper redisMapper;
+    ValidateUtils validateUtils;
     private final static String KEY_PREFIX = "selectRedisKey";
     private final static Logger LOGGER = LoggerFactory.getLogger(RedisServiceImpl.class);
     JedisWrapper jedisWrapper;
@@ -65,6 +67,10 @@ public class RedisServiceImpl implements RedisService {
         if (ip == "" || ip == null || port < 0) {
             return RedisEnum.NULL.getMsg();
         }
+        validateUtils=new ValidateUtils();
+        if (validateUtils.isIPAddressByRegex(ip)==false){
+            return RedisEnum.ERROR.getMsg();
+        }
         if (SearchRedisAddress(ip, port).size() != 0) {
             return RedisEnum.EXIST.getMsg();
         }
@@ -76,14 +82,22 @@ public class RedisServiceImpl implements RedisService {
     }
 
     @Override
-    public int delRedisAddress(String ip, int port) {
+    public String delRedisAddress(String ip, int port) {
         if (ip == "" || ip == null || port < 0) {
-            return RedisEnum.NULL.getCode();
+            return RedisEnum.NULL.getMsg();
+        }
+        validateUtils=new ValidateUtils();
+        if (validateUtils.isIPAddressByRegex(ip)==false){
+            return RedisEnum.ERROR.getMsg();
         }
         if (SearchRedisAddress(ip, port).size() < 1) {
-            return 0;
+            return RedisEnum.FAIL.getMsg();
         }
-        return redisMapper.delRedisAddress(ip, port);
+        int delredis = redisMapper.delRedisAddress(ip, port);
+        if (delredis>0){
+            return RedisEnum.DELSUCCESS.getMsg();
+        }
+        return RedisEnum.DELFALL.getMsg();
     }
 
 }

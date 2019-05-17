@@ -12,7 +12,9 @@ public enum RedisEnum {
     FAIL(3, "对应参数不存在"),
     ADDFAIL(4, "添加失败"),
     NON(5, "该key在redis中已不存在"),
-    EXIST(6, "对应参数已存在");
+    EXIST(6, "对应参数已存在"),
+    DELFALL(7, "添加失败"),
+    ERROR(8,"ip格式错误");
 
 
     private int code;

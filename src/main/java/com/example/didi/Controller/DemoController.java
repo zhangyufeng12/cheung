@@ -57,6 +57,11 @@ public class DemoController {
         return "page/redisreboot";
     }
 
+    @RequestMapping(value = "page/addNewRedis")
+    public String addNewRedis() {
+        return "page/addNewRedis";
+    }
+
     @RequestMapping(value = "page/RedisGD")
     public String RedisGD() {
         return "page/RedisGD";

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<!--/*-->
+<!--* @zhangyufeng-->
+<!--* 2019.5-->
+<!--* */-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Redis增删地址</title>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" type="text/css" href="/common/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="/common/bootstrap/css/bootstrap.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="/common/global.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="/css/personal.css" media="all"/>
+</head>
+<body>
+
+<section class="layui-larry-box">
+    <div class="larry-personal">
+        <div class="layui-tab">
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                <legend>Redis增删地址</legend>
+            </fieldset>
+            <div style="text-align: center; margin-top: 5px;">
+                <table border="0px" align="center" style="width:100%;table-layout:fixed">
+                    <tr>
+                        <td align="left" id="result1" height="27"></td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">IP</label>
+                <div class="layui-input-inline">
+                    <input type="tel" id="ip" placeholder="请输入ip" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">PORT</label>
+                <div class="layui-input-inline">
+                    <input type="tel" id="port" placeholder="请输入端口" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div>
+                    <button class="layui-btn" onclick="searchAddress()">查询</button>
+                    <button class="layui-btn" onclick="insAddress()">新增</button>
+                    <button class="layui-btn layui-btn-small layui-btn-primary" onclick="delAddress()"><i
+                            class="layui-icon">&#xe640;删除</i>
+                    </button>
+                </div>
+            </div>
+
+
+            <br></br>
+            <br></br>
+            <br></br>
+
+            <!--            <blockquote class="layui-elem-quote news_search">-->
+            <!--                <div class="layui-btn-group">-->
+            <!--                    <a>说明：<i>请先查询后再做清除动作</i></a>-->
+            <!--                </div>-->
+            <!--            </blockquote>-->
+
+            <br></br>
+
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                <legend>返回结果</legend>
+            </fieldset>
+            <div style="text-align: center; margin-top: 5px;">
+                <table border="0px" align="center" style="width:100%;table-layout:fixed">
+                    <tr>
+                        <td align="left" id="result" height="27"></td>
+                    </tr>
+                </table>
+
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+            </div>
+            <!-- 完 -->
+
+        </div>
+    </div>
+
+</section>
+<script type="text/javascript" src="/common/layui/layui.js"></script>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery.js"></script>
+
+<script type="text/javascript">
+
+    function searchAddress() {
+        var ip = $("#ip").val();
+        var port = $("#port").val();
+        if (ip == "" || port == "") {
+            alert("ip或port不能为空！")
+        } else {
+            $.ajax({
+                type: "GET",
+                url: "/redis/address/search",
+                data: {ip: ip, port: port},
+                success: function (data) {
+                    if (data == "") {
+                        $("#result").html("查询结果为空");
+//                        alert("查询结果为空");
+                    } else {
+
+                        var a = null;
+                        $.each(eval(data), function (index, resultData) {
+                            a += '<tr><td align="center" height="27">' + "{ ip:" + resultData.ip + '</td>' +
+                                '<td align="center" height="27">' + ",port:" + resultData.port + " }" + '</td></tr>';
+                        })
+
+                        $("#result").html(a);
+
+                    }
+                },
+                error: function (xhr) {
+                    alert(xhr.status + ':' + xhr.statusText);
+                    alert("查询失败")
+                }
+
+            });
+        }
+
+    }
+
+    function insAddress() {
+        var ip = $("#ip").val();
+        var port = $("#port").val();
+        if (ip == "" || port == "") {
+            alert("ip或port不能为空！")
+        } else {
+            $.ajax({
+                type: "GET",
+                url: "/redis/address/add",
+                data: {ip: ip, port: port},
+                success: function (data) {
+                    $("#result").html("result：" + data.result);
+                },
+                error: function (xhr) {
+                    alert(xhr.status + ':' + xhr.statusText);
+                    alert("添加失败")
+                }
+
+            })
+        }
+    }
+
+    function delAddress() {
+        var ip = $("#ip").val();
+        var port = $("#port").val();
+        if (ip == "" || port == "") {
+            alert("ip或port不能为空！")
+        } else {
+            $.ajax({
+                type: "GET",
+                url: "/redis/address/del",
+                data: {ip: ip, port: port},
+                success: function (data) {
+                    $("#result").html("result：" + data.result);
+                },
+                error: function (xhr) {
+                    alert(xhr.status + ':' + xhr.statusText);
+                    alert("删除失败!")
+                }
+
+            });
+        }
+
+    }
+</script>
+</body>
+</html>
