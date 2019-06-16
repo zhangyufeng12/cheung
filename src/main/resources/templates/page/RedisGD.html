@@ -38,24 +38,35 @@
 
             <!-- 操作日志 -->
 
-
+            <div class="layui-form-item">
+                <label class="layui-form-label">服务地址</label>
+                <div class="addRedis">
+                    <div class="layui-input-inline">
+                        <select name="redisIpAndPort" id="redisIpAndPort" class="abc"></select>
+                    </div>
+                </div>
+            </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">Key</label>
                 <div class="layui-input-inline">
                     <input type="tel" id="key" placeholder="请输入key" class="layui-input"/>
                 </div>
-                <button class="layui-btn" onclick="getRedis()">查询</button>
-                <button class="layui-btn layui-btn-small layui-btn-primary" onclick="delRedis()"><i class="layui-icon">&#xe640;清除</i>
-                </button>
+            </div>
+            <div class="layui-form-item">
+                <div>
+                    <button class="layui-btn layui-btn-primary" onclick="clearAll1()">重置</button>
+                    <button class="layui-btn" onclick="getRedis()">查询</button>
+                    <button class="layui-btn layui-btn-small layui-btn-primary" onclick="delRedis()"><i
+                            class="layui-icon">&#xe640;清除</i>
+                    </button>
+                </div>
             </div>
 
-            <br></br>
-            <br></br>
             <br></br>
 
             <blockquote class="layui-elem-quote news_search">
                 <div class="layui-btn-group">
-                    <a>说明：<i>请先查询后再做清除动作</i></a>
+                    <a>说明：<i>建议先查询后再做清除动作</i></a>
                 </div>
             </blockquote>
 
@@ -94,19 +105,29 @@
 
 <script type="text/javascript">
 
+    // 参数校验
+    function validateParam(redisIpAndPort, key) {
+        if (redisIpAndPort == "")
+            return "地址端口不能为空!";
+//        if (!(/^1[3|4|5|7|8][0-9]{9}$/.test(testerPhone)))
+//            return "请输入正确的手机号!";
+        if (key == "")
+            return "key不能为空";
+
+        return "";
+    }
+
     function getRedis() {
         var key = $("#key").val();
-        if (key == "") {
-            alert("key不能为空！")
+        var redisIpAndPort = $("#redisIpAndPort").val();
+        var str = validateParam(redisIpAndPort, key);
+        if (str !== "") {
+            alert(str);
         } else {
             $.ajax({
                 type: "GET",
-                url: "/redis/getkv?key=" + key,
-//                data: JSON.stringify({
-//                    "mid":mid,
-//                }),
-//                dataType: "json",
-//                contentType: "application/json; charset=utf-8",
+                url: "/redis/getkv",
+                data: {redisIpAndPort: redisIpAndPort, key: key},
                 success: function (data) {
                     $("#result").html("查询结果：" + data.result);
                 },
@@ -122,12 +143,15 @@
 
     function delRedis() {
         var key = $("#key").val();
-        if (key == "") {
-            alert("key不能为空！")
+        var redisIpAndPort = $("#redisIpAndPort").val();
+        var str = validateParam(redisIpAndPort, key);
+        if (str !== "") {
+            alert(str);
         } else {
             $.ajax({
                 type: "GET",
-                url: "/redis/delkv?key=" + key,
+                url: "/redis/delkv",
+                data: {redisIpAndPort: redisIpAndPort, key: key},
 //                data: JSON.stringify({
 //                    "mid":mid,
 //                }),
@@ -145,6 +169,28 @@
         }
 
     }
+
+    $(document).ready(function () {
+
+        $.ajax({
+            url: "/redis/selectIpAndPort",
+            type: "GET",
+            success: function (result) {
+                $('#redisIpAndPort').empty();
+                $('#redisIpAndPort').append(new Option("请选择redis服务地址", ""));
+                for (var i = result.length - 1; i >= 0; i--) {
+                    $('#redisIpAndPort').append(
+                        new Option(result[i].ip + ":" + result[i].port, result[i].ip + ":" + result[i].port));
+
+                }
+            }
+        });
+    })
+
+    function clearAll1() {
+        $("#key").val("");
+    }
+
 </script>
 </body>
 </html>

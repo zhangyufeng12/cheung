@@ -49,7 +49,14 @@
                 </div>
             </div>
             <div class="layui-form-item">
+                <label class="layui-form-label">地址说明</label>
+                <div class="layui-input-inline">
+                    <input type="tel" id="explain" placeholder="选填" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
                 <div>
+                    <button class="layui-btn layui-btn-primary" onclick="clearAll1()">重置</button>
                     <button class="layui-btn" onclick="searchAddress()">查询</button>
                     <button class="layui-btn" onclick="insAddress()">新增</button>
                     <button class="layui-btn layui-btn-small layui-btn-primary" onclick="delAddress()"><i
@@ -58,17 +65,7 @@
                 </div>
             </div>
 
-
             <br></br>
-            <br></br>
-            <br></br>
-
-            <!--            <blockquote class="layui-elem-quote news_search">-->
-            <!--                <div class="layui-btn-group">-->
-            <!--                    <a>说明：<i>请先查询后再做清除动作</i></a>-->
-            <!--                </div>-->
-            <!--            </blockquote>-->
-
             <br></br>
 
             <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
@@ -119,11 +116,11 @@
                         $("#result").html("查询结果为空");
 //                        alert("查询结果为空");
                     } else {
-
                         var a = null;
                         $.each(eval(data), function (index, resultData) {
                             a += '<tr><td align="center" height="27">' + "{ ip:" + resultData.ip + '</td>' +
-                                '<td align="center" height="27">' + ",port:" + resultData.port + " }" + '</td></tr>';
+                                '<td align="center" height="27">' + ",port:" + resultData.port + '</td>' +
+                                '<td align="center" height="27">' + ",地址说明:" + resultData.explain + " }" + '</td></tr>';
                         })
 
                         $("#result").html(a);
@@ -143,13 +140,14 @@
     function insAddress() {
         var ip = $("#ip").val();
         var port = $("#port").val();
+        var explain = $("#explain").val();
         if (ip == "" || port == "") {
-            alert("ip或port不能为空！")
+            alert("ip、port或说明不能为空！")
         } else {
             $.ajax({
                 type: "GET",
                 url: "/redis/address/add",
-                data: {ip: ip, port: port},
+                data: {ip: ip, port: port, explain: explain},
                 success: function (data) {
                     $("#result").html("result：" + data.result);
                 },
@@ -183,6 +181,12 @@
             });
         }
 
+    }
+
+    function clearAll1() {
+        $("#ip").val("");
+        $("#port").val("");
+        $("#explain").val("");
     }
 </script>
 </body>

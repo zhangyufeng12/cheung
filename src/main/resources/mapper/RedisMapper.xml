@@ -9,9 +9,14 @@
         select * from address WHERE ip=#{ip} and port=#{port};
     </select>
 
+    <!--查询全部地址-->
+    <select id="queryAllRedisConnection" resultType="com.example.didi.domain.entity.RedisEntity">
+        select * from address;
+    </select>
+
     <!--添加ip:port-->
     <insert id="AddRedisAddress">
-       INSERT INTO `address` (`ip`,`port`)VALUES (#{ip}, #{port});
+       INSERT INTO `address` (`ip`,`port`,`explain`)VALUES (#{ip}, #{port},#{explain});
     </insert>
 
     <!-- 删除ip:port -->

@@ -7,10 +7,11 @@ import java.util.List;
 
 public interface RedisMapper {
 
-    public List<RedisEntity> SearchRedisAddress( @Param("ip") String ip, @Param("port") int port );
+    public List<RedisEntity> SearchRedisAddress(@Param("ip") String ip, @Param("port") int port);
 
-    public int AddRedisAddress( @Param("ip") String ip, @Param("port") int port );
+    public int AddRedisAddress(@Param("ip") String ip, @Param("port") int port, @Param("explain") String explain);
 
-    public int delRedisAddress( @Param("ip") String ip, @Param("port") int port );
+    public int delRedisAddress(@Param("ip") String ip, @Param("port") int port);
 
+    List<RedisEntity> queryAllRedisConnection();
 }

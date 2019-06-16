@@ -11,7 +11,8 @@ public class RedisUtil {
 
     private static final Log logger = LogFactory.getLog( RedisUtil.class );
 
-
+    /*
+    //初始化配置文件 读取配置文件中的地址
     static {
         new InitProperties();
     }
@@ -19,6 +20,8 @@ public class RedisUtil {
     private static String ADDR = System.getProperty(String.format("Redis.%s", "ip1"));
     //端口
     private static int PORT = Integer.parseInt(System.getProperty(String.format("Redis.%s", "port1")));
+    */
+
     //密码
     private static String AUTH = "123456";
     //连接实例的最大连接数
@@ -35,9 +38,10 @@ public class RedisUtil {
     public static JedisPool jedisPool = null;
 
     /**
-     *  初始化资源池
+     * 初始化资源池
      */
-    static {
+//    static {
+    public static RedisUtil init( String ADDR, int PORT ) { //获取入参中的地址信息
         try {
             JedisPoolConfig config = new JedisPoolConfig();
             config.setMaxTotal( MAX_ACTIVE );
@@ -48,6 +52,7 @@ public class RedisUtil {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        return new RedisUtil();
     }
 
 

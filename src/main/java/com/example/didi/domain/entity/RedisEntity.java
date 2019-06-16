@@ -8,4 +8,6 @@ public class RedisEntity {
     private String ip;
 
     private int port;
+
+    private String explain;
 }
